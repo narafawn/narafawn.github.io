@@ -1,6 +1,28 @@
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <NuxtLayout>
+    <v-app>
+      <v-app-bar>
+        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-title>My Toolkit</v-app-bar-title>
+        <v-btn href="https://github.com/GitHub30/mytoolkit.app" icon="mdi-github"></v-btn>
+      </v-app-bar>
+
+      <v-navigation-drawer v-model="drawer">
+        <v-list>
+          <v-list-item title="Password Generator" to="password-generator"></v-list-item>
+          <v-list-item title="file.gz Extractor" to="gz-extractor"></v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-main>
+        <NuxtPage />
+      </v-main>
+    </v-app>
+  </NuxtLayout>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const drawer = ref(null)
+</script>
