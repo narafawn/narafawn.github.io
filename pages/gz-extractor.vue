@@ -16,7 +16,7 @@ useHead({
 
 <template>
     <v-container>
-        <v-file-input label="Choose .gz file or drop here" width="500px" @change="handleChange"></v-file-input>
-        <v-textarea label="Content" v-model="content" class="w-50" rows="20"></v-textarea>
+        <v-file-input label="Choose .gz file or drop here" @change="handleChange"></v-file-input>
+        <v-textarea label="Content" v-model="content"></v-textarea>
     </v-container>
 </template>
