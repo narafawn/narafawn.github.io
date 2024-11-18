@@ -12,6 +12,7 @@
           <v-list-item title="Password Generator" to="password-generator"></v-list-item>
           <v-list-item title="file.gz Extractor" to="gz-extractor"></v-list-item>
           <v-list-item title="TOTP Generator" to="totp-generator"></v-list-item>
+          <v-list-item title="Video Frame Picker" to="video-frame-picker"></v-list-item>
         </v-list>
       </v-navigation-drawer>
 
