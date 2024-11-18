@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const password = ref(null)
+const password = ref(Math.random().toString(16).slice(-8))
 
 function generate() {
     password.value = Math.random().toString(16).slice(-8)
