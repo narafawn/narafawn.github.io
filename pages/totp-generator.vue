@@ -23,7 +23,7 @@ onMounted(() => {
 
 
 useHead({
-    title: 'Password Generator',
+    title: 'TOTP Generator',
 })
 </script>
 
