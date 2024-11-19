@@ -27,6 +27,6 @@ useHead({
 <template>
     <v-container>
         <v-textarea label="Input" v-model="input" rows="5" @input="handleInput"></v-textarea>
-        <v-textarea label="Output" v-model="output" rows="20"></v-textarea>
+        <v-textarea label="Output" v-model="output" rows="18"></v-textarea>
     </v-container>
 </template>
