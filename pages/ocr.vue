@@ -33,6 +33,6 @@ useHead({
     <v-container>
         <v-file-input label="Choose image file or drop here" @change="handleChange"></v-file-input>
         <v-progress-circular v-show="loading" :size="70" :width="7" color="purple" indeterminate></v-progress-circular>
-        <v-textarea v-show="!loading" label="Content" v-model="content" rows="20"></v-textarea>
+        <v-textarea v-show="!loading" label="Content" v-model="content" rows="22"></v-textarea>
     </v-container>
 </template>
