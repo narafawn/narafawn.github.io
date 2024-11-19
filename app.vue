@@ -3,7 +3,7 @@
     <v-app>
       <v-app-bar>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-app-bar-title>My Toolkit</v-app-bar-title>
+        <v-app-bar-title>My Toolkit Online</v-app-bar-title>
         <v-btn href="https://github.com/GitHub30/mytoolkit.app" icon="mdi-github"></v-btn>
       </v-app-bar>
 
