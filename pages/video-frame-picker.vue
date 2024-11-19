@@ -43,10 +43,10 @@ useHead({
         <video ref="video" style="max-width: 720px" class="w-100" controls @loadeddata="handleLoadeddata"
             v-show="loaded"></video>
         <div>
-            <v-btn @click="previousFrame" v-show="loaded" color="secondary" class="ml-4">
+            <v-btn @click="previousFrame" v-show="loaded" color="secondary" class="ma-2">
                 < Previous frame</v-btn>
-                    <v-btn @click="nextFrame" v-show="loaded" color="secondary" class="mx-4">Next frame ></v-btn>
-                    <v-btn @click="pick" v-show="loaded" color="primary">Pick frame</v-btn>
+                    <v-btn @click="nextFrame" v-show="loaded" color="secondary" class="ma-2">Next frame ></v-btn>
+                    <v-btn @click="pick" v-show="loaded" color="primary" class="ma-2">Pick frame</v-btn>
                     <canvas ref="canvas" hidden></canvas>
         </div>
     </v-container>
