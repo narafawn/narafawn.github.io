@@ -8,9 +8,15 @@ function generateUUID() {
 }
 
 const uuid = ref(generateUUID())
+const copied = ref(false)
 
 function generate() {
     uuid.value = generateUUID()
+}
+
+function copy() {
+    navigator.clipboard.writeText(uuid.value)
+    copied.value = true
 }
 
 useHead({
@@ -20,7 +26,9 @@ useHead({
 
 <template>
     <v-container>
-        <v-btn @click="generate">Generate</v-btn>
+        <v-btn @click="generate" color="primary">Generate</v-btn>
+        <v-btn @click="copy" color="secondary" class="ml-4">Copy</v-btn>
         <v-text-field v-model="uuid" label="UUID" class="mt-8" style="max-width: 500px;"></v-text-field>
+        <v-snackbar v-model="copied">Copied!</v-snackbar>
     </v-container>
 </template>
