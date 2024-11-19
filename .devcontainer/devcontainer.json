@@ -20,7 +20,8 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "npm install && npm run dev"
-
+	"postStartCommand": "echo 'コンテナが起動しました'",
+	"postAttachCommand": "echo 'VS Code がアタッチされました'"
 	// Configure tool-specific properties.
 	// "customizations": {},
 
