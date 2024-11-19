@@ -15,6 +15,7 @@
           <v-list-item title="TOTP Generator" to="totp-generator"></v-list-item>
           <v-list-item title="SSH Key Generator" to="ssh-key-generator"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
+          <v-list-item title="Replace text" to="replace-text"></v-list-item>
           <v-list-item title="Video Frame Picker" to="video-frame-picker"></v-list-item>
           <v-list-item title="unserialize.php" to="unserialize-php"></v-list-item>
           <v-list-item title="OCR" to="ocr"></v-list-item>
