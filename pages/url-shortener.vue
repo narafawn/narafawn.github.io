@@ -7,9 +7,7 @@ const copied = ref(false)
 
 function debounce(func, delay) {
     let id
-
     return function (...args) {
-        // 既存のタイマーをクリア
         if (id) {
             clearTimeout(id)
         }
