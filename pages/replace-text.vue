@@ -31,7 +31,7 @@ useHead({
 
 <template>
     <v-container>
-        <v-textarea label="Input" v-model="input" rows="8" @input="handleInput"></v-textarea>
+        <v-textarea label="Input" v-model="input" rows="9" @input="handleInput"></v-textarea>
         <div class="d-flex">
             <v-text-field v-model="pattern" label="Pattern" class="flex-grow-0" width="200px"
                 @input="handleInput"></v-text-field>
@@ -41,6 +41,6 @@ useHead({
             <v-checkbox v-if="useRegex" label="Ignore Case" v-model="ignoreCase" @change="handleInput"></v-checkbox>
             <v-checkbox v-if="useRegex" label="Multiline" v-model="multiline" @change="handleInput"></v-checkbox>
         </div>
-        <v-textarea label="Output" v-model="output" rows="8"></v-textarea>
+        <v-textarea label="Output" v-model="output" rows="9"></v-textarea>
     </v-container>
 </template>
