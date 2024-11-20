@@ -13,6 +13,7 @@
           <v-list-item title="UUID Generator" to="uuid-generator"></v-list-item>
           <v-list-item title="file.gz Extractor" to="gz-extractor"></v-list-item>
           <v-list-item title="TOTP Generator" to="totp-generator"></v-list-item>
+          <v-list-item title="CSR Generator" to="csr-generator"></v-list-item>
           <v-list-item title="SSH Key Generator" to="ssh-key-generator"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
           <v-list-item title="Replace text" to="replace-text"></v-list-item>

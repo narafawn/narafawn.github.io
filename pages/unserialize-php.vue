@@ -7,8 +7,8 @@ const output = ref('')
 let php = null
 async function handleInput() {
     output.value = ''
-    const encoded = btoa(input.value)
-    await php.run(`<?php var_export(unserialize(base64_decode('${encoded}')));`)
+    const encoded = btoa(encodeURIComponent(input.value))
+    await php.run(`<?php var_export(unserialize(rawurldecode(base64_decode('${encoded}'))));`)
 }
 
 onMounted(async () => {
