@@ -63,10 +63,10 @@ useHead({
         <v-text-field v-model="organizationName" label="Organization Name"></v-text-field>
         <v-text-field v-model="organizationalUnitName" label="Organizational Unit Name"></v-text-field>
         <v-text-field v-model="commonName" label="Common Name"></v-text-field>
-        <v-btn @click="generate" color="primary">Generate</v-btn>
-        <v-btn @click="copy" color="secondary" class="ml-4">CSR Copy</v-btn>
-        <v-btn @click="privateKeyCopy" color="secondary" class="ml-4">Private Key Copy</v-btn>
-        <v-textarea label="CSR" v-model="csrPem" class="mt-2"></v-textarea>
+        <v-btn @click="generate" color="primary" class="ma-2">Generate</v-btn>
+        <v-btn @click="copy" color="secondary" class="ma-2">CSR Copy</v-btn>
+        <v-btn @click="privateKeyCopy" color="secondary" class="ma-2">Private Key Copy</v-btn>
+        <v-textarea label="CSR" v-model="csrPem"></v-textarea>
         <v-textarea label="Private Key" v-model="privateKeyPem"></v-textarea>
         <v-snackbar v-model="csrCopied">CSR Copied!</v-snackbar>
         <v-snackbar v-model="privateKeyCopied">Private Key Copied!</v-snackbar>
