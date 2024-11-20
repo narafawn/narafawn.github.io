@@ -57,12 +57,12 @@ useHead({
 
 <template>
     <v-container>
-        <v-text-field v-model="countryName" label="Country Name" width="400px"></v-text-field>
-        <v-text-field v-model="stateOrProvinceName" label="State Or Province Name" width="400px"></v-text-field>
-        <v-text-field v-model="localityName" label="Locality Name" width="400px"></v-text-field>
-        <v-text-field v-model="organizationName" label="Organization Name" width="400px"></v-text-field>
-        <v-text-field v-model="organizationalUnitName" label="Organizational Unit Name" width="400px"></v-text-field>
-        <v-text-field v-model="commonName" label="Common Name" width="400px"></v-text-field>
+        <v-text-field v-model="countryName" label="Country Name"></v-text-field>
+        <v-text-field v-model="stateOrProvinceName" label="State Or Province Name"></v-text-field>
+        <v-text-field v-model="localityName" label="Locality Name"></v-text-field>
+        <v-text-field v-model="organizationName" label="Organization Name"></v-text-field>
+        <v-text-field v-model="organizationalUnitName" label="Organizational Unit Name"></v-text-field>
+        <v-text-field v-model="commonName" label="Common Name"></v-text-field>
         <v-btn @click="generate" color="primary">Generate</v-btn>
         <v-btn @click="copy" color="secondary" class="ml-4">CSR Copy</v-btn>
         <v-btn @click="privateKeyCopy" color="secondary" class="ml-4">Private Key Copy</v-btn>
