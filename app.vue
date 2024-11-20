@@ -19,6 +19,7 @@ function gotoTop() {
       <v-navigation-drawer v-model="drawer">
         <v-list>
           <v-list-item title="Password Generator" to="password-generator"></v-list-item>
+          <v-list-item title="URL Shortener" to="url-shortener"></v-list-item>
           <v-list-item title="UUID Generator" to="uuid-generator"></v-list-item>
           <v-list-item title="file.gz Extractor" to="gz-extractor"></v-list-item>
           <v-list-item title="TOTP Generator" to="totp-generator"></v-list-item>
