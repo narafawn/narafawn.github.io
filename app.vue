@@ -40,3 +40,8 @@ function gotoTop() {
     </v-app>
   </NuxtLayout>
 </template>
+<style>
+html {
+  overflow-y: auto;
+}
+</style>
