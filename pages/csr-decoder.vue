@@ -39,10 +39,6 @@ function privateKeyCopy() {
     privateKeyCopied.value = true
 }
 
-onMounted(() => {
-    requestIdleCallback(generate)
-})
-
 useHead({
     title: 'CSR Decoder',
     script: [
