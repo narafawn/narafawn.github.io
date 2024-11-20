@@ -23,7 +23,7 @@ useHead({
         <v-textarea label="Text" v-model="text" rows="20" @input="handleInput"></v-textarea>
         <div class="d-flex">
             <v-text-field v-model="count" label="Count" class="flex-grow-0" width="200px"></v-text-field>
-            <v-checkbox label="Ignore empty line" v-model="ignoreEmpty" @change="handleInput"></v-checkbox>
+            <v-checkbox label="Ignore empty" v-model="ignoreEmpty" @change="handleInput"></v-checkbox>
         </div>
     </v-container>
 </template>
