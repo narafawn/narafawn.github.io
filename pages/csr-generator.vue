@@ -30,18 +30,22 @@ function generate() {
 }
 
 function copy() {
-    navigator.clipboard.writeText(csrPem.value)
+    const i = document.body.appendChild(document.createElement('input'))
+    i.value = csrPem.value
+    i.select()
+    document.execCommand('copy')
+    document.body.removeChild(i)
     csrCopied.value = true
 }
 
 function privateKeyCopy() {
-    navigator.clipboard.writeText(privateKeyPem.value)
+    const i = document.body.appendChild(document.createElement('input'))
+    i.value = privateKeyPem.value
+    i.select()
+    document.execCommand('copy')
+    document.body.removeChild(i)
     privateKeyCopied.value = true
 }
-
-onMounted(() => {
-    requestIdleCallback(generate)
-})
 
 useHead({
     title: 'CSR Generator',

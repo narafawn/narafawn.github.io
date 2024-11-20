@@ -15,7 +15,11 @@ function generate() {
 }
 
 function copy() {
-    navigator.clipboard.writeText(uuid.value)
+    const i = document.body.appendChild(document.createElement('input'))
+    i.value = uuid.value
+    i.select()
+    document.execCommand('copy')
+    document.body.removeChild(i)
     copied.value = true
 }
 

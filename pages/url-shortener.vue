@@ -7,9 +7,7 @@ const copied = ref(false)
 
 function debounce(func, delay) {
     let id
-
     return function (...args) {
-        // 既存のタイマーをクリア
         if (id) {
             clearTimeout(id)
         }
@@ -38,7 +36,11 @@ async function handleInputName() {
 }
 
 function copy() {
-    navigator.clipboard.writeText(`https://${name.value}.mytoolkit.app`)
+    const i = document.body.appendChild(document.createElement('input'))
+    i.value = `https://${name.value}.mytoolkit.app`
+    i.select()
+    document.execCommand('copy')
+    document.body.removeChild(i)
     copied.value = true
 }
 
