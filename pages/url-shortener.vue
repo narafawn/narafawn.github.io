@@ -25,7 +25,7 @@ const createUrl = debounce(() => fetch(`https://${name.value}.mytoolkit.app`, { 
 async function handleInput() {
     try {
         new URL(url.value)
-        name.value = Math.random().toString(16).slice(-5)
+        if (!name.value) name.value = Math.random().toString(16).slice(-5)
         createUrl()
     } catch (error) { }
 }
