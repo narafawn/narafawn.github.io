@@ -1,6 +1,11 @@
 # https://github.com/actions/deploy-pages#usage
 name: Deploy to GitHub Pages
 on:
+  workflow_run:
+    workflows:
+      - "Sync Upstream" # 前のワークフロー名と一致させる
+    types:
+      - completed # 前のワークフローが完了したときに実行
   workflow_dispatch:
   push:
     branches:
