@@ -1,0 +1,38 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    - cron: "0 2 * * *" # 毎日午前2時に実行 (CRON形式で設定可能)
+  workflow_dispatch: # 手動トリガーも有効にする
+
+jobs:
+  sync-upstream:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # 履歴全体を取得
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream repository
+        run: |
+          git remote add upstream https://github.com/GitHub30/mytoolkit.app.git # フォーク元リポジトリ
+          git fetch upstream
+
+      - name: Merge upstream/main into current branch
+        run: |
+          git merge upstream/main
+          if [ $? -ne 0 ]; then
+            echo "Merge conflicts detected. Stopping process."
+            exit 1
+          fi
+
+      - name: Push changes to the fork
+        run: |
+          git push origin main
