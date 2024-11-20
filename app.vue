@@ -1,9 +1,18 @@
+<script setup>
+import { ref } from 'vue'
+
+const drawer = ref(null)
+
+function gotoTop() {
+  location = '.'
+}
+</script>
 <template>
   <NuxtLayout>
     <v-app>
       <v-app-bar>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-app-bar-title>My Toolkit Online</v-app-bar-title>
+        <v-app-bar-title @click="gotoTop">My Toolkit Online</v-app-bar-title>
         <v-btn href="https://github.com/GitHub30/mytoolkit.app" icon="mdi-github"></v-btn>
       </v-app-bar>
 
@@ -30,9 +39,3 @@
     </v-app>
   </NuxtLayout>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-
-const drawer = ref(null)
-</script>
