@@ -15,6 +15,7 @@
         <v-btn href="unserialize-php" class="ma-2" variant="outlined" color="primary">unserialize.php</v-btn>
         <v-btn href="wake-lock" class="ma-2" variant="outlined" color="primary">Screen Wake Lock</v-btn>
         <v-btn href="ocr" class="ma-2" variant="outlined" color="primary">OCR</v-btn>
+        <v-btn href="mail" class="ma-2" variant="outlined" color="primary">MAIL</v-btn>
     </v-container>
 </template>
 
