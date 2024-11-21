@@ -8,6 +8,8 @@ const loggedIn = ref(false)
 const dialog = ref(false)
 const dialogTitle = ref('')
 const dialogText = ref('')
+const snackbar = ref(false)
+const snackbarMessage = ref('')
 const headers = [
     { title: 'Subject', key: 'parsed.subject' },
     { title: 'Sender', key: 'parsed.from.text' },
@@ -26,6 +28,8 @@ async function login() {
         localStorage.setItem('mail.password', password.value)
     } else {
         logout()
+        snackbarMessage.value = await r.json()
+        snackbar.value = true
     }
 }
 
@@ -67,7 +71,8 @@ useHead({
             <v-text-field v-model="password" label="Password"></v-text-field>
             <v-btn color="primary" type="submit">Login</v-btn>
         </v-form>
-        <v-btn v-if="loggedIn" color="primary" @click="logout">Logout</v-btn>
+        <v-btn v-if="loggedIn" color="primary" @click="logout">Compose</v-btn>
+        <v-btn v-if="loggedIn" color="secondary" @click="logout">Logout</v-btn>
         <v-data-table v-if="loggedIn" :headers="headers" :items="emails" @click:row="handleClickRow"></v-data-table>
         <v-dialog v-model="dialog" width="auto">
             <v-card max-width="400" min-width="200" :title="dialogTitle">
@@ -77,5 +82,6 @@ useHead({
                 </template>
             </v-card>
         </v-dialog>
+        <v-snackbar v-model="snackbar">{{ snackbarMessage }}</v-snackbar>
     </v-container>
 </template>
