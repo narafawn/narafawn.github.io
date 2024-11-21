@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const host = ref('imap.example.com')
-const user = ref('username@example.com')
+const host = ref('imap.mail.yahoo.co.jp')
+const user = ref('username@yahoo.co.jp')
 const password = ref('password')
 const loggedIn = ref(false)
 const dialog = ref(false)
