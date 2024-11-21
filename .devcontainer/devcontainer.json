@@ -3,7 +3,13 @@
 		"vscode": {
 			"extensions": [
 				"Vue.volar"
-			]
+			],
+			"settings": {
+				"[vue]": {
+					"editor.formatOnSave": true,
+					"editor.defaultFormatter": "Vue.volar"
+				}
+			}
 		}
 	},
 	"postAttachCommand": "npm run dev"
