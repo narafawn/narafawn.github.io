@@ -7,12 +7,15 @@
         <v-btn href="totp-generator" class="ma-2" variant="outlined" color="primary">TOTP Generator</v-btn>
         <v-btn href="csr-generator" class="ma-2" variant="outlined" color="primary">CSR Generator</v-btn>
         <v-btn href="csr-decoder" class="ma-2" variant="outlined" color="primary">CSR Decoder</v-btn>
+        <v-btn href="crt-decoder" class="ma-2" variant="outlined" color="primary">CRT Decoder</v-btn>
         <v-btn href="ssh-key-generator" class="ma-2" variant="outlined" color="primary">SSH Key Generator</v-btn>
         <v-btn href="count-lines" class="ma-2" variant="outlined" color="primary">Count Lines</v-btn>
         <v-btn href="replace-text" class="ma-2" variant="outlined" color="primary">Replace text</v-btn>
         <v-btn href="video-frame-picker" class="ma-2" variant="outlined" color="primary">Video Frame Picker</v-btn>
         <v-btn href="unserialize-php" class="ma-2" variant="outlined" color="primary">unserialize.php</v-btn>
+        <v-btn href="wake-lock" class="ma-2" variant="outlined" color="primary">Screen Wake Lock</v-btn>
         <v-btn href="ocr" class="ma-2" variant="outlined" color="primary">OCR</v-btn>
+        <v-btn href="mail" class="ma-2" variant="outlined" color="primary">MAIL</v-btn>
     </v-container>
 </template>
 

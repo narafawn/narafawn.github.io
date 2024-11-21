@@ -1,51 +1,39 @@
 <script setup>
 import { ref } from 'vue'
 
-const csrPem = ref('')
-const privateKeyPem = ref('')
-const countryName = ref('GB')
-const stateOrProvinceName = ref('Somerset')
-const localityName = ref('Glastonbury')
-const organizationName = ref('The Brain Room Limited')
-const organizationalUnitName = ref('PHP Documentation Team')
-const commonName = ref('example.com')
-const csrCopied = ref(false)
-const privateKeyCopied = ref(false)
+// https://en.wikipedia.org/wiki/Certificate_signing_request
+const csrPem = ref(`-----BEGIN CERTIFICATE REQUEST-----
+MIICzDCCAbQCAQAwgYYxCzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARub25lMQ0wCwYD
+VQQHDARub25lMRIwEAYDVQQKDAlXaWtpcGVkaWExDTALBgNVBAsMBG5vbmUxGDAW
+BgNVBAMMDyoud2lraXBlZGlhLm9yZzEcMBoGCSqGSIb3DQEJARYNbm9uZUBub25l
+LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMP/U8RlcCD6E8AL
+PT8LLUR9ygyygPCaSmIEC8zXGJung3ykElXFRz/Jc/bu0hxCxi2YDz5IjxBBOpB/
+kieG83HsSmZZtR+drZIQ6vOsr/ucvpnB9z4XzKuabNGZ5ZiTSQ9L7Mx8FzvUTq5y
+/ArIuM+FBeuno/IV8zvwAe/VRa8i0QjFXT9vBBp35aeatdnJ2ds50yKCsHHcjvtr
+9/8zPVqqmhl2XFS3Qdqlsprzbgksom67OobJGjaV+fNHNQ0o/rzP//Pl3i7vvaEG
+7Ff8tQhEwR9nJUR1T6Z7ln7S6cOr23YozgWVkEJ/dSr6LAopb+cZ88FzW5NszU6i
+57HhA7ECAwEAAaAAMA0GCSqGSIb3DQEBBAUAA4IBAQBn8OCVOIx+n0AS6WbEmYDR
+SspR9xOCoOwYfamB+2Bpmt82R01zJ/kaqzUtZUjaGvQvAaz5lUwoMdaO0X7I5Xfl
+sllMFDaYoGD4Rru4s8gz2qG/QHWA8uPXzJVAj6X0olbIdLTEqTKsnBj4Zr1AJCNy
+/YcG4ouLJr140o26MhwBpoCRpPjAgdYMH60BYfnc4/DILxMVqR9xqK1s98d6Ob/+
+3wHFK+S7BRWrJQXcM8veAexXuk9lHQ+FgGfD0eSYGz0kyP26Qa2pLTwumjt+nBPl
+rfJxaLHwTQ/1988G0H35ED0f9Md5fzoKi5evU1wG5WRxdEUPyt3QUXxdQ69i0C+7
+-----END CERTIFICATE REQUEST-----`)
+const output = ref('')
 
-function generate() {
-    const keys = forge.pki.rsa.generateKeyPair(2048)
-    const csr = forge.pki.createCertificationRequest()
-    csr.publicKey = keys.publicKey
-    csr.setSubject([
-        { name: 'countryName', value: countryName.value },
-        { name: 'stateOrProvinceName', value: stateOrProvinceName.value },
-        { name: 'localityName', value: localityName.value },
-        { name: 'organizationName', value: organizationName.value },
-        { name: 'organizationalUnitName', value: organizationalUnitName.value },
-        { name: 'commonName', value: commonName.value },
-    ])
-    csr.sign(keys.privateKey)
-    csrPem.value = forge.pki.certificationRequestToPem(csr)
-    privateKeyPem.value = forge.pki.privateKeyToPem(keys.privateKey)
+function handleInput() {
+    output.value = ''
+    try {
+        const csr = forge.pki.certificationRequestFromPem(csrPem.value)
+        output.value = JSON.stringify(csr, null, 2)
+    } catch (error) {
+        output.value = error.message
+    }
 }
 
-function copy() {
-    const i = document.body.appendChild(document.createElement('input'))
-    i.value = csrPem.value
-    i.select()
-    document.execCommand('copy')
-    document.body.removeChild(i)
-    csrCopied.value = true
-}
-
-function privateKeyCopy() {
-    const i = document.body.appendChild(document.createElement('input'))
-    i.value = privateKeyPem.value
-    i.select()
-    document.execCommand('copy')
-    document.body.removeChild(i)
-    privateKeyCopied.value = true
-}
+onMounted(() => {
+    requestIdleCallback(handleInput)
+})
 
 useHead({
     title: 'CSR Decoder',
@@ -61,18 +49,7 @@ useHead({
 
 <template>
     <v-container>
-        <v-text-field v-model="countryName" label="Country Name"></v-text-field>
-        <v-text-field v-model="stateOrProvinceName" label="State Or Province Name"></v-text-field>
-        <v-text-field v-model="localityName" label="Locality Name"></v-text-field>
-        <v-text-field v-model="organizationName" label="Organization Name"></v-text-field>
-        <v-text-field v-model="organizationalUnitName" label="Organizational Unit Name"></v-text-field>
-        <v-text-field v-model="commonName" label="Common Name"></v-text-field>
-        <v-btn @click="generate" color="primary" class="ma-2">Generate</v-btn>
-        <v-btn @click="copy" color="secondary" class="ma-2">CSR Copy</v-btn>
-        <v-btn @click="privateKeyCopy" color="secondary" class="ma-2">Private Key Copy</v-btn>
-        <v-textarea label="CSR" v-model="csrPem"></v-textarea>
-        <v-textarea label="Private Key" v-model="privateKeyPem"></v-textarea>
-        <v-snackbar v-model="csrCopied">CSR Copied!</v-snackbar>
-        <v-snackbar v-model="privateKeyCopied">Private Key Copied!</v-snackbar>
+        <v-textarea label="CSR" v-model="csrPem" rows="17" @input="handleInput"></v-textarea>
+        <pre><code>{{ output }}</code></pre>
     </v-container>
 </template>
