@@ -72,7 +72,7 @@ useHead({
             <v-btn color="primary" type="submit">Login</v-btn>
         </v-form>
         <v-btn v-if="loggedIn" color="primary" @click="logout">Compose</v-btn>
-        <v-btn v-if="loggedIn" color="secondary" @click="logout">Logout</v-btn>
+        <v-btn v-if="loggedIn" color="secondary" @click="logout" class="ml-2">Logout</v-btn>
         <v-data-table v-if="loggedIn" :headers="headers" :items="emails" @click:row="handleClickRow"></v-data-table>
         <v-dialog v-model="dialog" width="auto">
             <v-card max-width="400" min-width="200" :title="dialogTitle">
