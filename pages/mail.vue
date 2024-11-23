@@ -25,7 +25,7 @@ async function handleUserInput() {
     if (!user.value.includes('@')) return
     const hostname = user.value.split('@').at(-1)
     const hostnameMap = {
-        'gmail.com': 'imap.google.com',
+        'gmail.com': 'imap.gmail.com',
         'yahoo.co.jp': 'imap.mail.yahoo.co.jp',
         'ybb.ne.jp': 'imap.mail.yahoo.co.jp',
         'outlook.com': 'imap-mail.outlook.com',
