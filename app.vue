@@ -33,7 +33,8 @@ function gotoTop() {
           <v-list-item title="unserialize.php" to="unserialize-php"></v-list-item>
           <v-list-item title="Screen Wake Lock" to="wake-lock"></v-list-item>
           <v-list-item title="OCR" to="ocr"></v-list-item>
-          <v-list-item title="MAIL" to="mail"></v-list-item>
+          <v-list-item title="Web MAIL" to="mail"></v-list-item>
+          <v-list-item title="Web FTP" to="ftp"></v-list-item>
         </v-list>
       </v-navigation-drawer>
 

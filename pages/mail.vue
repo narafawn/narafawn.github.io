@@ -147,7 +147,7 @@ onMounted(() => {
 })
 
 useHead({
-    title: 'MAIL'
+    title: 'Web MAIL'
 })
 </script>
 
