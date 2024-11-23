@@ -38,7 +38,7 @@ function handleInput() {
 }
 
 onMounted(() => {
-    requestIdleCallback(handleInput)
+    if (window.forge) requestIdleCallback(handleInput)
 })
 
 useHead({
@@ -47,7 +47,8 @@ useHead({
         {
             src: 'https://cdn.jsdelivr.net/npm/node-forge/dist/forge.min.js',
             async: true,
-            defer: true
+            defer: true,
+            onload: handleInput
         }
     ]
 })
