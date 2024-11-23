@@ -52,7 +52,7 @@ useHead({
             @change="handleWordCountChange" />
         <v-btn @click="generate" color="primary">Generate</v-btn>
         <v-btn @click="copy" color="secondary" class="ml-4">Copy</v-btn>
-        <v-text-field v-model="passphrase" label="Passphrase" class="mt-8" width="300"></v-text-field>
+        <v-text-field v-model="passphrase" label="Passphrase" class="mt-8" width="350"></v-text-field>
         <v-snackbar v-model="copied">Copied!</v-snackbar>
     </v-container>
 </template>
