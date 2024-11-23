@@ -36,6 +36,7 @@ function gotoTop() {
           <v-list-item title="OCR" to="ocr"></v-list-item>
           <v-list-item title="Web MAIL" to="mail"></v-list-item>
           <v-list-item title="Web FTP" to="ftp"></v-list-item>
+          <v-list-item title="ふりがな（ルビ）" to="furigana"></v-list-item>
         </v-list>
       </v-navigation-drawer>
 
