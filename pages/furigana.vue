@@ -32,6 +32,12 @@ function generateRubyHtml(apiResponse) {
 const invalidCharactors = [
     { char: '·', replacement: 'EQXEN1MZM0MBU769' },
     { char: '–', replacement: 'D8RD70IFD0AIH6X8' },
+    { char: '—', replacement: 'UJF3VQEU1MNWHNB2' },
+    { char: '≥', replacement: 'ZMNCMYIGSSCFWB6J' },
+    { char: '≤', replacement: 'A0GIEVZ0J1NY31TQ' },
+    { char: '↔', replacement: 'A90NN8LY52EO64W4' },
+    { char: '~', replacement: 'QFNBOA3U2EV6UJ37' },
+    { char: '∑', replacement: 'ZBDVSMMEJMQRXSC3' },
 ]
 
 async function generate() {
