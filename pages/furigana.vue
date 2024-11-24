@@ -36,8 +36,6 @@ const invalidCharactors = [
 
 async function generate() {
     if (!q.value) {
-        snackbarMessage.value = '空文字は処理できません'
-        showSnackbar.value = true
         return
     }
 
