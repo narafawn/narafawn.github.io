@@ -28,9 +28,9 @@ function generateRubyHtml(apiResponse) {
 }
 
 async function generate() {
-    const response = await fetch('https://jlp.deno.dev/', {
+    const appid = 'dj00aiZpPXYwNnZyWW9hU3lOYyZzPWNvbnN1bWVyc2VjcmV0Jng9YTE-'
+    const response = await fetch('https://jlp.yahooapis.jp/FuriganaService/V2/furigana?' + new URLSearchParams({ appid }), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             id: Math.random().toString(),
             jsonrpc: '2.0',
