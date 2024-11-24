@@ -19,6 +19,7 @@ function gotoTop() {
       <v-navigation-drawer v-model="drawer">
         <v-list>
           <v-list-item title="Password Generator" to="password-generator"></v-list-item>
+          <v-list-item title="Passphrase Generator" to="passphrase-generator"></v-list-item>
           <v-list-item title="URL Shortener" to="url-shortener"></v-list-item>
           <v-list-item title="UUID Generator" to="uuid-generator"></v-list-item>
           <v-list-item title="file.gz Extractor" to="gz-extractor"></v-list-item>
@@ -33,7 +34,9 @@ function gotoTop() {
           <v-list-item title="unserialize.php" to="unserialize-php"></v-list-item>
           <v-list-item title="Screen Wake Lock" to="wake-lock"></v-list-item>
           <v-list-item title="OCR" to="ocr"></v-list-item>
-          <v-list-item title="MAIL" to="mail"></v-list-item>
+          <v-list-item title="Web MAIL" to="mail"></v-list-item>
+          <v-list-item title="Web FTP" to="ftp"></v-list-item>
+          <v-list-item title="ふりがな（ルビ）" to="furigana"></v-list-item>
         </v-list>
       </v-navigation-drawer>
 

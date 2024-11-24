@@ -1,6 +1,7 @@
 <template>
     <v-container>
         <v-btn href="password-generator" class="ma-2" variant="outlined" color="primary">Password Generator</v-btn>
+        <v-btn href="passphrase-generator" class="ma-2" variant="outlined" color="primary">Passphrase Generator</v-btn>
         <v-btn href="url-shortener" class="ma-2" variant="outlined" color="primary">URL Shortener</v-btn>
         <v-btn href="uuid-generator" class="ma-2" variant="outlined" color="primary">UUID Generator</v-btn>
         <v-btn href="gz-extractor" class="ma-2" variant="outlined" color="primary">file.gz Extractor</v-btn>
@@ -15,7 +16,9 @@
         <v-btn href="unserialize-php" class="ma-2" variant="outlined" color="primary">unserialize.php</v-btn>
         <v-btn href="wake-lock" class="ma-2" variant="outlined" color="primary">Screen Wake Lock</v-btn>
         <v-btn href="ocr" class="ma-2" variant="outlined" color="primary">OCR</v-btn>
-        <v-btn href="mail" class="ma-2" variant="outlined" color="primary">MAIL</v-btn>
+        <v-btn href="mail" class="ma-2" variant="outlined" color="primary">Web MAIL</v-btn>
+        <v-btn href="ftp" class="ma-2" variant="outlined" color="primary">Web FTP</v-btn>
+        <v-btn href="furigana" class="ma-2" variant="outlined" color="primary">ふりがな（ルビ）</v-btn>
     </v-container>
 </template>
 
