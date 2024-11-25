@@ -10,7 +10,7 @@ const snackbarMessage = ref('')
 const headers = [
     { title: 'Name', key: 'name' },
     { title: 'Size', key: 'size', value: item => formatBytes(item.size), align: 'end' },
-    { title: 'ModifiedAt', key: 'modifiedAt', value: item => new Date(item.modifiedAt) },
+    { title: 'ModifiedAt', key: 'modifiedAt', value: item => formatDate(new Date(item.modifiedAt)) },
 ]
 const files = ref([])
 
@@ -20,6 +20,11 @@ function formatBytes(bytes, decimals = 1) {
     const sizes = ['  B ', ' KB', ' MB', ' GB', ' TB', ' PB']
     const i = Math.floor(Math.log(bytes) / Math.log(k))
     return parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + sizes[i]
+}
+
+function formatDate(date) {
+    const diff = new Date() - date
+    return diff / 86400000 < 1 ? date.toLocaleTimeString('sv') : date.toLocaleDateString('sv')
 }
 
 async function handleUserInput() {
@@ -41,16 +46,9 @@ async function login() {
     const options = {
         host: host.value,
         user: user.value,
-        password: password.value,
-        secure: false,
+        password: password.value
     }
-    const r = await fetch('https://ws.vercel.app/api/ftp/list.js', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ options }),
-    })
+    const r = await fetch('https://ws.vercel.app/api/ftp/list.js?' + new URLSearchParams(options), { method: "POST" })
     if (r.ok) {
         loggedIn.value = true
         files.value = await r.json()
@@ -71,6 +69,28 @@ function logout() {
     loggedIn.value = false
 }
 
+async function handleFileChange(e) {
+    if (!e.target.files.length) return
+
+    const body = new FormData()
+    for (const file of e.target.files) {
+        body.append('files', file)
+    }
+
+    const options = {
+        host: host.value,
+        user: user.value,
+        password: password.value
+    }
+    const r = await fetch('https://ws.vercel.app/api/ftp/upload.js?' + new URLSearchParams(options), { method: "POST", body })
+    if (r.ok) {
+        snackbarMessage.value = (await r.json()).message
+        snackbar.value = true
+    } else {
+        snackbarMessage.value = await r.json()
+        snackbar.value = true
+    }
+}
 
 onMounted(() => {
     const savedHost = localStorage.getItem('ftp.host')
@@ -97,8 +117,11 @@ useHead({
             <v-text-field v-model="host" label="Host"></v-text-field>
             <v-btn color="primary" type="submit">Login</v-btn>
         </v-form>
-        <v-btn v-if="loggedIn" color="primary">Upload</v-btn>
-        <v-btn v-if="loggedIn" color="secondary" @click="logout" class="ml-2">Logout</v-btn>
+        <div class="d-flex align-center">
+            <v-file-input v-if="loggedIn" label="Choose file to upload or drop here" @change="handleFileChange"
+                hide-details multiple></v-file-input>
+            <v-btn v-if="loggedIn" color="secondary" @click="logout" class="ml-2">Logout</v-btn>
+        </div>
         <v-data-table v-if="loggedIn" :headers="headers" :items="files"></v-data-table>
         <v-snackbar v-model="snackbar">{{ snackbarMessage }}</v-snackbar>
     </v-container>
