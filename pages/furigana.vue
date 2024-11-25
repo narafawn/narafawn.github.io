@@ -6,11 +6,10 @@ const correction = ref('杯 さかずき\n僕 しもべ\n司 し')
 const html = ref('<ruby>漢字<rt>かんじ</rt></ruby>かな<ruby>交<rt>ま</rt></ruby>じり<ruby>文<rt>ぶん</rt></ruby>にふりがなを<ruby>振<rt>ふ</rt></ruby>ること。')
 const showSnackbar = ref(false)
 const snackbarMessage = ref('')
+let responseData = { result: { word: [] } }
 
 function generateRubyHtml(apiResponse) {
     const correctionMap = Object.fromEntries(correction.value.split('\n').map(l => l.split(/\s/)).filter(l => l.length === 2))
-
-
     const words = apiResponse.result.word
 
     let html = ''
@@ -70,22 +69,23 @@ async function generate() {
             }
         })
     })
-    const responseData = await response.json()
+    responseData = await response.json()
     console.log(responseData)
+    correct()
+}
+
+function correct(e) {
     if (responseData.error) {
         snackbarMessage.value = responseData.error.message
         showSnackbar.value = true
         return
     }
+
     let htmlValue = generateRubyHtml(responseData)
     for (const { char, replacement } of invalidCharactors) {
         htmlValue = htmlValue.replaceAll(replacement, char)
     }
     html.value = htmlValue
-}
-
-function correctionInput(e) {
-
 }
 
 function debounce(func, delay) {
@@ -102,7 +102,6 @@ function debounce(func, delay) {
 }
 
 const debouncedGenerate = debounce(generate, 1000)
-const debouncedCorrectionInput = debounce(correctionInput, 1000)
 
 useHead({
     title: 'ふりがな（ルビ）'
@@ -127,7 +126,7 @@ rt {
             <details>
                 <summary>補正ふりがな</summary>
                 補正したい漢字を右クリックし、検証を押し、&lt;ruby&gt;漢字&lt;rt&gt;かんじ&lt;/rt&gt;&lt;/ruby&gt;の漢字を左にふりがなを右に入力してください。
-                <v-textarea label="補正ふりがな" v-model="correction" @input="debouncedCorrectionInput"></v-textarea>
+                <v-textarea label="補正ふりがな" v-model="correction" @input="correctionInput"></v-textarea>
             </details>
         </div>
         <v-textarea label="テキスト" v-model="q" @input="debouncedGenerate"></v-textarea>
