@@ -46,16 +46,9 @@ async function login() {
     const options = {
         host: host.value,
         user: user.value,
-        password: password.value,
-        secure: false,
+        password: password.value
     }
-    const r = await fetch('https://ws.vercel.app/api/ftp/list.js', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ options }),
-    })
+    const r = await fetch('https://ws.vercel.app/api/ftp/list.js?' + new URLSearchParams(options), { method: "POST" })
     if (r.ok) {
         loggedIn.value = true
         files.value = await r.json()
@@ -76,8 +69,27 @@ function logout() {
     loggedIn.value = false
 }
 
-function handleFileChange(e) {
+async function handleFileChange(e) {
+    if (!e.target.files.length) return
 
+    const body = new FormData()
+    for (const file of e.target.files) {
+        body.append('files', file)
+    }
+
+    const options = {
+        host: host.value,
+        user: user.value,
+        password: password.value
+    }
+    const r = await fetch('https://ws.vercel.app/api/ftp/upload.js?' + new URLSearchParams(options), { method: "POST", body })
+    if (r.ok) {
+        snackbarMessage.value = (await r.json()).message
+        snackbar.value = true
+    } else {
+        snackbarMessage.value = await r.json()
+        snackbar.value = true
+    }
 }
 
 onMounted(() => {
@@ -107,7 +119,7 @@ useHead({
         </v-form>
         <div class="d-flex align-center">
             <v-file-input v-if="loggedIn" label="Choose file to upload or drop here" @change="handleFileChange"
-                hide-details></v-file-input>
+                hide-details multiple></v-file-input>
             <v-btn v-if="loggedIn" color="secondary" @click="logout" class="ml-2">Logout</v-btn>
         </div>
         <v-data-table v-if="loggedIn" :headers="headers" :items="files"></v-data-table>
