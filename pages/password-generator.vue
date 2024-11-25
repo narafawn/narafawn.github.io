@@ -46,8 +46,11 @@ useHead({
 <template>
     <v-container>
         <v-btn @click="generate" color="primary">Generate</v-btn>
-        <v-btn @click="copy" color="secondary" class="ml-4">Copy</v-btn>
-        <v-text-field v-model="password" label="Password" class="mt-8" width="200px"></v-text-field>
+        <div class="d-flex align-center mt-4">
+            <v-text-field v-model="password" label="Password" class="flex-grow-0" width="200px"
+                hide-details></v-text-field>
+            <v-btn @click="copy" color="secondary" class="ml-4">Copy</v-btn>
+        </div>
         <v-data-table :headers="headers" :items="history" @click:row="handleClickRow"></v-data-table>
         <v-snackbar v-model="copied">Copied!</v-snackbar>
     </v-container>
