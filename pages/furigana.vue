@@ -2,11 +2,15 @@
 import { ref } from 'vue'
 
 const q = ref('漢字かな交じり文にふりがなを振ること。')
+const correction = ref('杯 さかずき\n僕 しもべ\n司 し')
 const html = ref('<ruby>漢字<rt>かんじ</rt></ruby>かな<ruby>交<rt>ま</rt></ruby>じり<ruby>文<rt>ぶん</rt></ruby>にふりがなを<ruby>振<rt>ふ</rt></ruby>ること。')
 const showSnackbar = ref(false)
 const snackbarMessage = ref('')
 
 function generateRubyHtml(apiResponse) {
+    const correctionMap = Object.fromEntries(correction.value.split('\n').map(l => l.split(/\s/)).filter(l => l.length === 2))
+
+
     const words = apiResponse.result.word
 
     let html = ''
@@ -14,13 +18,15 @@ function generateRubyHtml(apiResponse) {
         if (word.subword) {
             word.subword.forEach(sub => {
                 if (sub.furigana !== sub.surface && !/^[ァ-ヶー]+$/.test(sub.surface)) {
-                    html += `<ruby>${sub.surface}<rt>${sub.furigana}</rt></ruby>`
+                    const furigana = correctionMap[sub.surface] ?? sub.furigana
+                    html += `<ruby>${sub.surface}<rt>${furigana}</rt></ruby>`
                 } else {
                     html += sub.surface
                 }
             })
         } else if (word.furigana) {
-            html += `<ruby>${word.surface}<rt>${word.furigana}</rt></ruby>`
+            const furigana = correctionMap[word.surface] ?? word.furigana
+            html += `<ruby>${word.surface}<rt>${furigana}</rt></ruby>`
         } else {
             html += word.surface
         }
@@ -78,6 +84,10 @@ async function generate() {
     html.value = htmlValue
 }
 
+function correctionInput(e) {
+
+}
+
 function debounce(func, delay) {
     let id
     return function (...args) {
@@ -92,6 +102,7 @@ function debounce(func, delay) {
 }
 
 const debouncedGenerate = debounce(generate, 1000)
+const debouncedCorrectionInput = debounce(correctionInput, 1000)
 
 useHead({
     title: 'ふりがな（ルビ）'
@@ -111,7 +122,14 @@ rt {
 
 <template>
     <v-container>
-        <p class="mb-2">漢字かな交じり文に、ひらがなとローマ字のふりがな（ルビ）を付けます。</p>
+        <div class="d-flex">
+            <p class="mb-2">漢字かな交じり文に、ひらがなとローマ字のふりがな（ルビ）を付けます。</p>
+            <details>
+                <summary>補正ふりがな</summary>
+                補正したい漢字を右クリックし、検証を押し、&lt;ruby&gt;漢字&lt;rt&gt;かんじ&lt;/rt&gt;&lt;/ruby&gt;の漢字を左にふりがなを右に入力してください。
+                <v-textarea label="補正ふりがな" v-model="correction" @input="debouncedCorrectionInput"></v-textarea>
+            </details>
+        </div>
         <v-textarea label="テキスト" v-model="q" @input="debouncedGenerate"></v-textarea>
         <div v-html="html" class="output"></div>
         <a href="https://developer.yahoo.co.jp/webapi/jlp/furigana/v2/furigana.html" target="_blank"
