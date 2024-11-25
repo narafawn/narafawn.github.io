@@ -129,7 +129,7 @@ rt {
         <details>
             <summary>補正ふりがな</summary>
             左に正規表現で置換したい文字列を、右に置換後の文字列を入力してください。
-            <v-textarea label="補正ふりがな" v-model="correction" @input="correctionInput"></v-textarea>
+            <v-textarea label="補正ふりがな" v-model="correction" @input="correct"></v-textarea>
         </details>
         <v-textarea label="テキスト" v-model="q" @input="debouncedGenerate"></v-textarea>
         <div v-html="html" class="output"></div>
