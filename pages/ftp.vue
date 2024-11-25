@@ -69,6 +69,16 @@ function logout() {
     loggedIn.value = false
 }
 
+function handleClickRow(event, row) {
+    const options = {
+        host: host.value,
+        user: user.value,
+        password: password.value,
+        filename: row.item.name
+    }
+    location = 'https://ws.vercel.app/api/ftp/download.js?' + new URLSearchParams(options)
+}
+
 async function handleFileChange(e) {
     if (!e.target.files.length) return
 
@@ -122,7 +132,7 @@ useHead({
                 hide-details multiple></v-file-input>
             <v-btn v-if="loggedIn" color="secondary" @click="logout" class="ml-2">Logout</v-btn>
         </div>
-        <v-data-table v-if="loggedIn" :headers="headers" :items="files"></v-data-table>
+        <v-data-table v-if="loggedIn" :headers="headers" :items="files" @click:row="handleClickRow"></v-data-table>
         <v-snackbar v-model="snackbar">{{ snackbarMessage }}</v-snackbar>
     </v-container>
 </template>
