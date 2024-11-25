@@ -70,6 +70,11 @@ function logout() {
 }
 
 function handleClickRow(event, row) {
+    if (row.item.size / 1024 / 1024 > 32) {
+        snackbarMessage.value = 'Sorry Cannot download a large file.😭'
+        snackbar.value = true
+        return
+    }
     const options = {
         host: host.value,
         user: user.value,
