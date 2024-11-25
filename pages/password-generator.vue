@@ -107,7 +107,7 @@ useHead({
             <v-checkbox label="#$&" v-model="useSymbol" hide-details></v-checkbox>
             <v-checkbox label="Readable" v-model="useReadable" hide-details></v-checkbox>
             <v-text-field type="number" label="Length" v-model.number="length" min="0" class="flex-grow-0 ml-2"
-                width="200" density="compact" hide-details />
+                width="80" density="compact" hide-details />
         </div>
         <v-btn @click="generate" color="primary">Generate</v-btn>
         <div class="d-flex align-center mt-4">
