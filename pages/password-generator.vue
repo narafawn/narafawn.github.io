@@ -6,7 +6,7 @@ const history = ref([])
 const copied = ref(false)
 const headers = [
     { title: 'Password', key: 'password' },
-    { title: 'CreatedAt', key: 'createdAt', value: item => new Date(item.createdAt) },
+    { title: 'CreatedAt', key: 'createdAt', value: item => new Date(item.createdAt).toLocaleString('sv') },
 ]
 
 function generate() {
