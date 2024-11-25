@@ -2,14 +2,17 @@
 import { ref } from 'vue'
 
 const q = ref('漢字かな交じり文にふりがなを振ること。')
-const correction = ref('杯 さかずき\n僕 しもべ\n司 し')
+const correction = ref(`<ruby>杯<rt>.*?</rt></ruby> <ruby>杯<rt>さかずき</rt></ruby>
+<ruby>僕<rt>.*?</rt></ruby> <ruby>僕<rt>しもべ</rt></ruby>
+<ruby>主<rt>.*?</rt></ruby> <ruby>主<rt>しゅ</rt></ruby>
+<ruby>司<rt>.*?</rt></ruby> <ruby>司<rt>し</rt></ruby>
+<ruby>出<rt>いで</rt></ruby>エジプト <ruby>出<rt>しゅつ</rt></ruby>エジプト`)
 const html = ref('<ruby>漢字<rt>かんじ</rt></ruby>かな<ruby>交<rt>ま</rt></ruby>じり<ruby>文<rt>ぶん</rt></ruby>にふりがなを<ruby>振<rt>ふ</rt></ruby>ること。')
 const showSnackbar = ref(false)
 const snackbarMessage = ref('')
 let responseData = { result: { word: [] } }
 
 function generateRubyHtml(apiResponse) {
-    const correctionMap = Object.fromEntries(correction.value.split('\n').map(l => l.split(/\s/)).filter(l => l.length === 2))
     const words = apiResponse.result.word
 
     let html = ''
@@ -17,15 +20,13 @@ function generateRubyHtml(apiResponse) {
         if (word.subword) {
             word.subword.forEach(sub => {
                 if (sub.furigana !== sub.surface && !/^[ァ-ヶー]+$/.test(sub.surface)) {
-                    const furigana = correctionMap[sub.surface] ?? sub.furigana
-                    html += `<ruby>${sub.surface}<rt>${furigana}</rt></ruby>`
+                    html += `<ruby>${sub.surface}<rt>${sub.furigana}</rt></ruby>`
                 } else {
                     html += sub.surface
                 }
             })
         } else if (word.furigana) {
-            const furigana = correctionMap[word.surface] ?? word.furigana
-            html += `<ruby>${word.surface}<rt>${furigana}</rt></ruby>`
+            html += `<ruby>${word.surface}<rt>${word.furigana}</rt></ruby>`
         } else {
             html += word.surface
         }
@@ -85,6 +86,9 @@ function correct(e) {
     for (const { char, replacement } of invalidCharactors) {
         htmlValue = htmlValue.replaceAll(replacement, char)
     }
+    for (const [pattern, replacement] of correction.value.split('\n').map(l => l.split(/\s/)).filter(l => l.length === 2)) {
+        htmlValue = htmlValue.replaceAll(new RegExp(pattern, 'g'), replacement)
+    }
     html.value = htmlValue
 }
 
@@ -121,14 +125,12 @@ rt {
 
 <template>
     <v-container>
-        <div class="d-flex">
-            <p class="mb-2">漢字かな交じり文に、ひらがなとローマ字のふりがな（ルビ）を付けます。</p>
-            <details>
-                <summary>補正ふりがな</summary>
-                補正したい漢字を右クリックし、検証を押し、&lt;ruby&gt;漢字&lt;rt&gt;かんじ&lt;/rt&gt;&lt;/ruby&gt;の漢字を左にふりがなを右に入力してください。
-                <v-textarea label="補正ふりがな" v-model="correction" @input="correctionInput"></v-textarea>
-            </details>
-        </div>
+        <p class="mb-2">漢字かな交じり文に、ひらがなとローマ字のふりがな（ルビ）を付けます。</p>
+        <details>
+            <summary>補正ふりがな</summary>
+            左に正規表現で置換したい文字列を、右に置換後の文字列を入力してください。
+            <v-textarea label="補正ふりがな" v-model="correction" @input="correctionInput"></v-textarea>
+        </details>
         <v-textarea label="テキスト" v-model="q" @input="debouncedGenerate"></v-textarea>
         <div v-html="html" class="output"></div>
         <a href="https://developer.yahoo.co.jp/webapi/jlp/furigana/v2/furigana.html" target="_blank"
