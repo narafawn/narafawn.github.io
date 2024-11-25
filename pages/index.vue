@@ -19,6 +19,7 @@
         <v-btn href="mail" class="ma-2" variant="outlined" color="primary">Web MAIL</v-btn>
         <v-btn href="ftp" class="ma-2" variant="outlined" color="primary">Web FTP</v-btn>
         <v-btn href="furigana" class="ma-2" variant="outlined" color="primary">ふりがな（ルビ）</v-btn>
+        <v-btn href="website-availability" class="ma-2" variant="outlined" color="primary">Website Availability</v-btn>
     </v-container>
 </template>
 
