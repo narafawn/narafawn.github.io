@@ -133,7 +133,7 @@ useHead({
             <v-btn color="primary" type="submit">Login</v-btn>
         </v-form>
         <div class="d-flex align-center">
-            <v-file-input v-if="loggedIn" label="Choose file to upload or drop here" @change="handleFileChange"
+            <v-file-input v-if="loggedIn" label="Choose file to upload or drop here ≦ 4.5MB" @change="handleFileChange"
                 hide-details multiple></v-file-input>
             <v-btn v-if="loggedIn" color="secondary" @click="logout" class="ml-2">Logout</v-btn>
         </div>
