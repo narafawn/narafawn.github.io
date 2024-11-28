@@ -39,6 +39,7 @@ function gotoTop() {
           <v-list-item title="MX Lookup" to="mx-lookup"></v-list-item>
           <v-list-item title="NAPTR Lookup" to="naptr-lookup"></v-list-item>
           <v-list-item title="SOA Lookup" to="soa-lookup"></v-list-item>
+          <v-list-item title="SRV Lookup" to="srv-lookup"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
           <v-list-item title="Replace text" to="replace-text"></v-list-item>
           <v-list-item title="Video Frame Picker" to="video-frame-picker"></v-list-item>

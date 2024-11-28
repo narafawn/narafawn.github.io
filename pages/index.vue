@@ -21,6 +21,7 @@
         <v-btn href="mx-lookup" class="ma-2" variant="outlined" color="primary">MX Lookup</v-btn>
         <v-btn href="naptr-lookup" class="ma-2" variant="outlined" color="primary">NAPTR Lookup</v-btn>
         <v-btn href="soa-lookup" class="ma-2" variant="outlined" color="primary">SOA Lookup</v-btn>
+        <v-btn href="srv-lookup" class="ma-2" variant="outlined" color="primary">SRV Lookup</v-btn>
         <v-btn href="count-lines" class="ma-2" variant="outlined" color="primary">Count Lines</v-btn>
         <v-btn href="replace-text" class="ma-2" variant="outlined" color="primary">Replace text</v-btn>
         <v-btn href="video-frame-picker" class="ma-2" variant="outlined" color="primary">Video Frame Picker</v-btn>
