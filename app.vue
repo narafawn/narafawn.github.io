@@ -35,6 +35,7 @@ function gotoTop() {
           <v-list-item title="NS Lookup" to="ns-lookup"></v-list-item>
           <v-list-item title="PTR Lookup" to="ptr-lookup"></v-list-item>
           <v-list-item title="ANY Lookup" to="any-lookup"></v-list-item>
+          <v-list-item title="CAA Lookup" to="caa-lookup"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
           <v-list-item title="Replace text" to="replace-text"></v-list-item>
           <v-list-item title="Video Frame Picker" to="video-frame-picker"></v-list-item>

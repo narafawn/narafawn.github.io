@@ -17,6 +17,7 @@
         <v-btn href="ns-lookup" class="ma-2" variant="outlined" color="primary">NS Lookup</v-btn>
         <v-btn href="ptr-lookup" class="ma-2" variant="outlined" color="primary">PTR Lookup</v-btn>
         <v-btn href="any-lookup" class="ma-2" variant="outlined" color="primary">ANY Lookup</v-btn>
+        <v-btn href="caa-lookup" class="ma-2" variant="outlined" color="primary">CAA Lookup</v-btn>
         <v-btn href="count-lines" class="ma-2" variant="outlined" color="primary">Count Lines</v-btn>
         <v-btn href="replace-text" class="ma-2" variant="outlined" color="primary">Replace text</v-btn>
         <v-btn href="video-frame-picker" class="ma-2" variant="outlined" color="primary">Video Frame Picker</v-btn>

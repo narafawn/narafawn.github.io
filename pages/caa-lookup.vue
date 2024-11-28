@@ -3,16 +3,16 @@ import { ref } from 'vue'
 
 const hostname = ref('')
 const results = ref([{
-    type: 'ANY',
-    name: 'example.com',
-    content: { address: '93.184.215.14', ttl: 3600, type: 'A' },
+    type: 'CAA',
+    name: 'google.com',
+    content: { "critical": 0, "issue": "pki.goog" },
     accessedAt: new Date().toLocaleString('sv')
 }])
 
 async function lookup() {
     if (!hostname.value) return
-    if (results.value[0].name === 'example.com') results.value.splice(0, 1)
-    const params = { hostname: hostname.value, rrtype: 'ANY' }
+    if (results.value[0].name === 'google.com') results.value.splice(0, 1)
+    const params = { hostname: hostname.value, rrtype: 'CAA' }
     const r = await fetch('https://ws.vercel.app/api/dns/dns.js?' + new URLSearchParams(params))
     const contents = await r.json()
     console.log(contents)
@@ -23,7 +23,7 @@ async function lookup() {
                     for (const childContent of content) {
                         console.log('childContent')
                         results.value.unshift({
-                            type: 'ANY',
+                            type: 'CAA',
                             name: hostname.value,
                             content: childContent,
                             accessedAt: new Date().toLocaleString('sv')
@@ -31,7 +31,7 @@ async function lookup() {
                     }
                 } else {
                     results.value.unshift({
-                        type: 'ANY',
+                        type: 'CAA',
                         name: hostname.value,
                         content,
                         accessedAt: new Date().toLocaleString('sv')
@@ -40,7 +40,7 @@ async function lookup() {
             }
         } else {
             results.value.unshift({
-                type: 'ANY',
+                type: 'CAA',
                 name: hostname.value,
                 content: contents,
                 accessedAt: new Date().toLocaleString('sv')
@@ -48,7 +48,7 @@ async function lookup() {
         }
     } else {
         results.value.unshift({
-            type: 'ANY',
+            type: 'CAA',
             name: hostname.value,
             content: contents,
             accessedAt: new Date().toLocaleString('sv')
@@ -72,7 +72,7 @@ function debounce(func, delay) {
 const handleInput = debounce(lookup, 1000)
 
 function getRowClass(item) {
-    return { class: typeof item.item.content === 'string' && item.item.content.startsWith('queryAny E') ? 'unavailable-row' : 'available-row' }
+    return { class: typeof item.item.content === 'string' && item.item.content.startsWith('queryCaa E') ? 'unavailable-row' : 'available-row' }
 }
 
 onMounted(() => {
@@ -80,7 +80,7 @@ onMounted(() => {
 })
 
 useHead({
-    title: 'ANY Lookup Checker',
+    title: 'CAA Lookup Checker',
 })
 </script>
 <style>
@@ -95,7 +95,7 @@ useHead({
 <template>
     <v-container>
         <div class="d-flex align-center">
-            <v-text-field label="Domain" placeholder="example.com" v-model="hostname" class="flex-grow-0 mr-2"
+            <v-text-field label="Domain" placeholder="google.com" v-model="hostname" class="flex-grow-0 mr-2"
                 hide-details width="350" @input="handleInput" @keyup.enter="lookup" />
             <v-btn @click="lookup" color="primary">Lookup</v-btn>
         </div>
