@@ -3,16 +3,16 @@ import { ref } from 'vue'
 
 const hostname = ref('')
 const results = ref([{
-    type: 'A',
+    type: 'ANY',
     name: 'example.com',
-    content: '127.0.0.1',
+    content: 'example.com',
     accessedAt: new Date().toLocaleString('sv')
 }])
 
 async function lookup() {
     if (!hostname.value) return
     if (results.value[0].name === 'example.com') results.value.splice(0, 1)
-    const params = { hostname: hostname.value, rrtype: 'A' }
+    const params = { hostname: hostname.value, rrtype: 'ANY' }
     const r = await fetch('https://ws.vercel.app/api/dns/dns.js?' + new URLSearchParams(params))
     const contents = await r.json()
     console.log(contents)
@@ -23,7 +23,7 @@ async function lookup() {
                     for (const childContent of content) {
                         console.log('childContent')
                         results.value.unshift({
-                            type: 'A',
+                            type: 'ANY',
                             name: hostname.value,
                             content: childContent,
                             accessedAt: new Date().toLocaleString('sv')
@@ -31,7 +31,7 @@ async function lookup() {
                     }
                 } else {
                     results.value.unshift({
-                        type: 'A',
+                        type: 'ANY',
                         name: hostname.value,
                         content,
                         accessedAt: new Date().toLocaleString('sv')
@@ -40,7 +40,7 @@ async function lookup() {
             }
         } else {
             results.value.unshift({
-                type: 'A',
+                type: 'ANY',
                 name: hostname.value,
                 content: contents,
                 accessedAt: new Date().toLocaleString('sv')
@@ -48,7 +48,7 @@ async function lookup() {
         }
     } else {
         results.value.unshift({
-            type: 'A',
+            type: 'ANY',
             name: hostname.value,
             content: contents,
             accessedAt: new Date().toLocaleString('sv')
@@ -72,7 +72,7 @@ function debounce(func, delay) {
 const handleInput = debounce(lookup, 1000)
 
 function getRowClass(item) {
-    return { class: typeof item.item.content === 'string' && item.item.content.startsWith('queryA E') ? 'unavailable-row' : 'available-row' }
+    return { class: typeof item.item.content === 'string' && item.item.content.startsWith('queryAny E') ? 'unavailable-row' : 'available-row' }
 }
 
 onMounted(() => {
@@ -80,7 +80,7 @@ onMounted(() => {
 })
 
 useHead({
-    title: 'A Lookup Checker',
+    title: 'ANY Lookup Checker',
 })
 </script>
 <style>

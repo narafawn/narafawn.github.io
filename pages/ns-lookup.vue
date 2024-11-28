@@ -72,7 +72,7 @@ function debounce(func, delay) {
 const handleInput = debounce(lookup, 1000)
 
 function getRowClass(item) {
-    return { class: item.item.content.startsWith('queryNs E') ? 'unavailable-row' : 'available-row' }
+    return { class: typeof item.item.content === 'string' && item.item.content.startsWith('queryNs E') ? 'unavailable-row' : 'available-row' }
 }
 
 onMounted(() => {
