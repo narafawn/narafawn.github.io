@@ -3,16 +3,16 @@ import { ref } from 'vue'
 
 const hostname = ref('')
 const results = ref([{
-    type: 'TXT',
+    type: 'NS',
     name: 'example.com',
-    content: 'google-site-verification=bar',
+    content: 'ns.example.com',
     accessedAt: new Date().toLocaleString('sv')
 }])
 
 async function lookup() {
     if (!hostname.value) return
     if (results.value[0].name === 'example.com') results.value.splice(0, 1)
-    const params = { hostname: hostname.value, rrtype: 'TXT' }
+    const params = { hostname: hostname.value, rrtype: 'NS' }
     const r = await fetch('https://ws.vercel.app/api/dns/dns.js?' + new URLSearchParams(params))
     const contents = await r.json()
     console.log(contents)
@@ -23,7 +23,7 @@ async function lookup() {
                     for (const childContent of content) {
                         console.log('childContent')
                         results.value.unshift({
-                            type: 'TXT',
+                            type: 'NS',
                             name: hostname.value,
                             content: childContent,
                             accessedAt: new Date().toLocaleString('sv')
@@ -31,7 +31,7 @@ async function lookup() {
                     }
                 } else {
                     results.value.unshift({
-                        type: 'TXT',
+                        type: 'NS',
                         name: hostname.value,
                         content,
                         accessedAt: new Date().toLocaleString('sv')
@@ -40,7 +40,7 @@ async function lookup() {
             }
         } else {
             results.value.unshift({
-                type: 'TXT',
+                type: 'NS',
                 name: hostname.value,
                 content: contents,
                 accessedAt: new Date().toLocaleString('sv')
@@ -48,7 +48,7 @@ async function lookup() {
         }
     } else {
         results.value.unshift({
-            type: 'TXT',
+            type: 'NS',
             name: hostname.value,
             content: contents,
             accessedAt: new Date().toLocaleString('sv')
@@ -72,7 +72,7 @@ function debounce(func, delay) {
 const handleInput = debounce(lookup, 1000)
 
 function getRowClass(item) {
-    return { class: item.item.content.startsWith('queryTxt E') ? 'unavailable-row' : 'available-row' }
+    return { class: item.item.content.startsWith('queryNs E') ? 'unavailable-row' : 'available-row' }
 }
 
 onMounted(() => {
@@ -80,7 +80,7 @@ onMounted(() => {
 })
 
 useHead({
-    title: 'TXT Lookup Checker',
+    title: 'NS Lookup Checker',
 })
 </script>
 <style>
@@ -95,7 +95,7 @@ useHead({
 <template>
     <v-container>
         <div class="d-flex align-center">
-            <v-text-field label="Domain" placeholder="example.com" v-model="hostname" class="flex-grow-0 mr-2"
+            <v-text-field label="Domain" placeholder="ns.example.com" v-model="hostname" class="flex-grow-0 mr-2"
                 hide-details width="350" @input="handleInput" @keyup.enter="lookup" />
             <v-btn @click="lookup" color="primary">Lookup</v-btn>
         </div>
