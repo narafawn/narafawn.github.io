@@ -15,7 +15,7 @@ function debounce(func, delay) {
         id = setTimeout(() => {
             func.apply(this, args)
         }, delay)
-    };
+    }
 }
 
 const createUrl = debounce(() => fetch(`https://${name.value}.mytoolkit.app`, { method: 'POST', body: url.value }), 1000)
