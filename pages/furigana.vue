@@ -122,6 +122,28 @@ rt {
     color: blue;
     font-size: 0.7rem;
 }
+
+
+@media print {
+
+    header,
+    nav,
+    p,
+    details,
+    a,
+    .v-input {
+        display: none !important;
+    }
+
+    .v-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    main {
+        padding: 0 !important;
+    }
+}
 </style>
 
 <template>
