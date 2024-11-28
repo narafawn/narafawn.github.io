@@ -50,6 +50,7 @@ function gotoTop() {
           <v-list-item title="Web MAIL" to="mail"></v-list-item>
           <v-list-item title="Web FTP" to="ftp"></v-list-item>
           <v-list-item title="ふりがな（ルビ）" to="furigana"></v-list-item>
+          <v-list-item title="形態素解析" to="morphological-analysis"></v-list-item>
           <v-list-item title="Website Availability" to="website-availability"></v-list-item>
         </v-list>
       </v-navigation-drawer>

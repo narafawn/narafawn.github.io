@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const q = ref('漢字かな交じり文にふりがなを振ること。')
+const query = ref('漢字かな交じり文にふりがなを振ること。')
 const correction = ref(`<ruby>杯<rt>.*?</rt></ruby> <ruby>杯<rt>さかずき</rt></ruby>
 <ruby>僕<rt>.*?</rt></ruby> <ruby>僕<rt>しもべ</rt></ruby>
 <ruby>主<rt>.*?</rt></ruby> <ruby>主<rt>しゅ</rt></ruby>
@@ -44,16 +44,17 @@ const invalidCharactors = [
     { char: '↔', replacement: 'A90NN8LY52EO64W4' },
     { char: '~', replacement: 'QFNBOA3U2EV6UJ37' },
     { char: '∑', replacement: 'ZBDVSMMEJMQRXSC3' },
+    { char: '▶', replacement: 'K9W5RF7NFJJVVQB3' },
+    { char: 'ม', replacement: 'UD4478XU4SH577ME' },
+    { char: '〜', replacement: 'C5ZJE3B6WE9JHX5D' },
 ]
 
 async function generate() {
-    if (!q.value) {
-        return
-    }
+    let q = query.value
+    if (!q) return
 
-    let query = q.value
     for (const { char, replacement } of invalidCharactors) {
-        query = query.replaceAll(char, replacement)
+        q = q.replaceAll(char, replacement)
     }
 
     html.value = ''
@@ -65,7 +66,7 @@ async function generate() {
             jsonrpc: '2.0',
             method: 'jlp.furiganaservice.furigana',
             params: {
-                q: query,
+                q,
                 grade: 1
             }
         })
@@ -131,7 +132,7 @@ rt {
             左に正規表現で置換したい文字列を、右に置換後の文字列を入力してください。
             <v-textarea label="補正ふりがな" v-model="correction" @input="correct"></v-textarea>
         </details>
-        <v-textarea label="テキスト" v-model="q" @input="debouncedGenerate"></v-textarea>
+        <v-textarea label="テキスト" v-model="query" @input="debouncedGenerate"></v-textarea>
         <div v-html="html" class="output"></div>
         <a href="https://developer.yahoo.co.jp/webapi/jlp/furigana/v2/furigana.html" target="_blank"
             class="float-right">Web Services by
