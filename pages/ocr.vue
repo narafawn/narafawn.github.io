@@ -7,9 +7,9 @@ const url = "https://script.google.com/macros/s/AKfycbzR9aMKMZxFR9ulFFuG1U6nFlyI
 
 async function base64Image(file) {
     return new Promise(resolve => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.replace(/^.*,/, ""));
-        reader.readAsDataURL(file);
+        const reader = new FileReader()
+        reader.onload = () => resolve(reader.result.replace(/^.*,/, ""))
+        reader.readAsDataURL(file)
     });
 }
 

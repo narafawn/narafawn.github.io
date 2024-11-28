@@ -10,8 +10,22 @@
         <v-btn href="csr-decoder" class="ma-2" variant="outlined" color="primary">CSR Decoder</v-btn>
         <v-btn href="crt-decoder" class="ma-2" variant="outlined" color="primary">CRT Decoder</v-btn>
         <v-btn href="ssh-key-generator" class="ma-2" variant="outlined" color="primary">SSH Key Generator</v-btn>
+        <v-btn href="a-lookup" class="ma-2" variant="outlined" color="primary">A Lookup</v-btn>
+        <v-btn href="aaaa-lookup" class="ma-2" variant="outlined" color="primary">AAAA Lookup</v-btn>
+        <v-btn href="cname-lookup" class="ma-2" variant="outlined" color="primary">CNAME Lookup</v-btn>
+        <v-btn href="txt-lookup" class="ma-2" variant="outlined" color="primary">TXT Lookup</v-btn>
+        <v-btn href="ns-lookup" class="ma-2" variant="outlined" color="primary">NS Lookup</v-btn>
+        <v-btn href="ptr-lookup" class="ma-2" variant="outlined" color="primary">PTR Lookup</v-btn>
+        <v-btn href="any-lookup" class="ma-2" variant="outlined" color="primary">ANY Lookup</v-btn>
+        <v-btn href="caa-lookup" class="ma-2" variant="outlined" color="primary">CAA Lookup</v-btn>
+        <v-btn href="mx-lookup" class="ma-2" variant="outlined" color="primary">MX Lookup</v-btn>
+        <v-btn href="naptr-lookup" class="ma-2" variant="outlined" color="primary">NAPTR Lookup</v-btn>
+        <v-btn href="soa-lookup" class="ma-2" variant="outlined" color="primary">SOA Lookup</v-btn>
+        <v-btn href="srv-lookup" class="ma-2" variant="outlined" color="primary">SRV Lookup</v-btn>
         <v-btn href="count-lines" class="ma-2" variant="outlined" color="primary">Count Lines</v-btn>
         <v-btn href="replace-text" class="ma-2" variant="outlined" color="primary">Replace text</v-btn>
+        <v-btn href="remove-key-quotes" class="ma-2" variant="outlined" color="primary">Remove JavaScript key
+            quotes</v-btn>
         <v-btn href="video-frame-picker" class="ma-2" variant="outlined" color="primary">Video Frame Picker</v-btn>
         <v-btn href="unserialize-php" class="ma-2" variant="outlined" color="primary">unserialize.php</v-btn>
         <v-btn href="wake-lock" class="ma-2" variant="outlined" color="primary">Screen Wake Lock</v-btn>
@@ -19,6 +33,8 @@
         <v-btn href="mail" class="ma-2" variant="outlined" color="primary">Web MAIL</v-btn>
         <v-btn href="ftp" class="ma-2" variant="outlined" color="primary">Web FTP</v-btn>
         <v-btn href="furigana" class="ma-2" variant="outlined" color="primary">ふりがな（ルビ）</v-btn>
+        <v-btn href="morphological-analysis" class="ma-2" variant="outlined" color="primary">形態素解析</v-btn>
+        <v-btn href="keyword-extraction" class="ma-2" variant="outlined" color="primary">キーフレーズ抽出</v-btn>
         <v-btn href="website-availability" class="ma-2" variant="outlined" color="primary">Website Availability</v-btn>
     </v-container>
 </template>

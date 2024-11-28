@@ -28,8 +28,21 @@ function gotoTop() {
           <v-list-item title="CSR Decoder" to="csr-decoder"></v-list-item>
           <v-list-item title="CRT Decoder" to="crt-decoder"></v-list-item>
           <v-list-item title="SSH Key Generator" to="ssh-key-generator"></v-list-item>
+          <v-list-item title="A Lookup" to="a-lookup"></v-list-item>
+          <v-list-item title="AAAA Lookup" to="aaaa-lookup"></v-list-item>
+          <v-list-item title="CNAME Lookup" to="cname-lookup"></v-list-item>
+          <v-list-item title="TXT Lookup" to="txt-lookup"></v-list-item>
+          <v-list-item title="NS Lookup" to="ns-lookup"></v-list-item>
+          <v-list-item title="PTR Lookup" to="ptr-lookup"></v-list-item>
+          <v-list-item title="ANY Lookup" to="any-lookup"></v-list-item>
+          <v-list-item title="CAA Lookup" to="caa-lookup"></v-list-item>
+          <v-list-item title="MX Lookup" to="mx-lookup"></v-list-item>
+          <v-list-item title="NAPTR Lookup" to="naptr-lookup"></v-list-item>
+          <v-list-item title="SOA Lookup" to="soa-lookup"></v-list-item>
+          <v-list-item title="SRV Lookup" to="srv-lookup"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
           <v-list-item title="Replace text" to="replace-text"></v-list-item>
+          <v-list-item title="Remove JS key quotes" to="remove-key-quotes"></v-list-item>
           <v-list-item title="Video Frame Picker" to="video-frame-picker"></v-list-item>
           <v-list-item title="unserialize.php" to="unserialize-php"></v-list-item>
           <v-list-item title="Screen Wake Lock" to="wake-lock"></v-list-item>
@@ -37,6 +50,8 @@ function gotoTop() {
           <v-list-item title="Web MAIL" to="mail"></v-list-item>
           <v-list-item title="Web FTP" to="ftp"></v-list-item>
           <v-list-item title="ふりがな（ルビ）" to="furigana"></v-list-item>
+          <v-list-item title="形態素解析" to="morphological-analysis"></v-list-item>
+          <v-list-item title="キーフレーズ抽出" to="keyword-extraction"></v-list-item>
           <v-list-item title="Website Availability" to="website-availability"></v-list-item>
         </v-list>
       </v-navigation-drawer>

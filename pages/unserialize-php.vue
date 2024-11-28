@@ -12,10 +12,10 @@ async function handleInput() {
 }
 
 onMounted(async () => {
-    const { PhpWeb } = await import('https://cdn.jsdelivr.net/npm/php-wasm/PhpWeb.mjs');
+    const { PhpWeb } = await import('https://cdn.jsdelivr.net/npm/php-wasm/PhpWeb.mjs')
     php = new PhpWeb
     php.addEventListener('output', (event) => {
-        output.value += event.detail;
+        output.value += event.detail
     })
     handleInput()
 })
