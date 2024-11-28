@@ -24,6 +24,8 @@
         <v-btn href="srv-lookup" class="ma-2" variant="outlined" color="primary">SRV Lookup</v-btn>
         <v-btn href="count-lines" class="ma-2" variant="outlined" color="primary">Count Lines</v-btn>
         <v-btn href="replace-text" class="ma-2" variant="outlined" color="primary">Replace text</v-btn>
+        <v-btn href="remove-key-quotes" class="ma-2" variant="outlined" color="primary">Remove JavaScript key
+            quotes</v-btn>
         <v-btn href="video-frame-picker" class="ma-2" variant="outlined" color="primary">Video Frame Picker</v-btn>
         <v-btn href="unserialize-php" class="ma-2" variant="outlined" color="primary">unserialize.php</v-btn>
         <v-btn href="wake-lock" class="ma-2" variant="outlined" color="primary">Screen Wake Lock</v-btn>

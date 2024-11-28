@@ -42,6 +42,7 @@ function gotoTop() {
           <v-list-item title="SRV Lookup" to="srv-lookup"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
           <v-list-item title="Replace text" to="replace-text"></v-list-item>
+          <v-list-item title="Remove JS key quotes" to="remove-key-quotes"></v-list-item>
           <v-list-item title="Video Frame Picker" to="video-frame-picker"></v-list-item>
           <v-list-item title="unserialize.php" to="unserialize-php"></v-list-item>
           <v-list-item title="Screen Wake Lock" to="wake-lock"></v-list-item>
