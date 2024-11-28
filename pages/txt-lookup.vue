@@ -10,6 +10,7 @@ const results = ref([{
 }])
 
 async function lookup() {
+    if (!hostname.value) return
     if (results.value[0].name === 'example.com') results.value.splice(0, 1)
     const params = { hostname: hostname.value, rrtype: 'TXT' }
     const r = await fetch('https://ws.vercel.app/api/dns/dns.js?' + new URLSearchParams(params))
@@ -73,6 +74,10 @@ const handleInput = debounce(lookup, 1000)
 function getRowClass(item) {
     return { class: item.item.content.startsWith('queryTxt E') ? 'unavailable-row' : 'available-row' }
 }
+
+onMounted(() => {
+    setInterval(lookup, 30000)
+})
 
 useHead({
     title: 'TXT Lookup Checker',
