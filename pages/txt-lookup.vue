@@ -3,15 +3,15 @@ import { ref } from 'vue'
 
 const hostname = ref('')
 const results = ref([{
-    type: 'CNAME',
-    name: '_foo.example.com',
-    content: 'bar.example.com',
+    type: 'TXT',
+    name: 'example.com',
+    content: 'google-site-verification=bar',
     accessedAt: new Date().toLocaleString('sv')
 }])
 
 async function lookup() {
-    if (results.value[0].name === '_foo.example.com') results.value.splice(0, 1)
-    const params = { hostname: hostname.value, rrtype: 'CNAME' }
+    if (results.value[0].name === 'example.com') results.value.splice(0, 1)
+    const params = { hostname: hostname.value, rrtype: 'TXT' }
     const r = await fetch('https://ws.vercel.app/api/dns/dns.js?' + new URLSearchParams(params))
     const contents = await r.json()
     console.log(contents)
@@ -22,7 +22,7 @@ async function lookup() {
                     for (const childContent of content) {
                         console.log('childContent')
                         results.value.unshift({
-                            type: 'CNAME',
+                            type: 'TXT',
                             name: hostname.value,
                             content: childContent,
                             accessedAt: new Date().toLocaleString('sv')
@@ -30,7 +30,7 @@ async function lookup() {
                     }
                 } else {
                     results.value.unshift({
-                        type: 'CNAME',
+                        type: 'TXT',
                         name: hostname.value,
                         content,
                         accessedAt: new Date().toLocaleString('sv')
@@ -39,7 +39,7 @@ async function lookup() {
             }
         } else {
             results.value.unshift({
-                type: 'CNAME',
+                type: 'TXT',
                 name: hostname.value,
                 content: contents,
                 accessedAt: new Date().toLocaleString('sv')
@@ -47,7 +47,7 @@ async function lookup() {
         }
     } else {
         results.value.unshift({
-            type: 'CNAME',
+            type: 'TXT',
             name: hostname.value,
             content: contents,
             accessedAt: new Date().toLocaleString('sv')
@@ -71,11 +71,11 @@ function debounce(func, delay) {
 const handleInput = debounce(lookup, 1000)
 
 function getRowClass(item) {
-    return { class: item.item.content.startsWith('queryCname E') ? 'unavailable-row' : 'available-row' }
+    return { class: item.item.content.startsWith('queryTxt E') ? 'unavailable-row' : 'available-row' }
 }
 
 useHead({
-    title: 'CNAME Lookup Checker',
+    title: 'TXT Lookup Checker',
 })
 </script>
 <style>
