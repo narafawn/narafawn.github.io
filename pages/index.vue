@@ -11,6 +11,7 @@
         <v-btn href="crt-decoder" class="ma-2" variant="outlined" color="primary">CRT Decoder</v-btn>
         <v-btn href="ssh-key-generator" class="ma-2" variant="outlined" color="primary">SSH Key Generator</v-btn>
         <v-btn href="a-lookup" class="ma-2" variant="outlined" color="primary">A Lookup</v-btn>
+        <v-btn href="aaaa-lookup" class="ma-2" variant="outlined" color="primary">AAAA Lookup</v-btn>
         <v-btn href="cname-lookup" class="ma-2" variant="outlined" color="primary">CNAME Lookup</v-btn>
         <v-btn href="txt-lookup" class="ma-2" variant="outlined" color="primary">TXT Lookup</v-btn>
         <v-btn href="ns-lookup" class="ma-2" variant="outlined" color="primary">NS Lookup</v-btn>

@@ -29,6 +29,7 @@ function gotoTop() {
           <v-list-item title="CRT Decoder" to="crt-decoder"></v-list-item>
           <v-list-item title="SSH Key Generator" to="ssh-key-generator"></v-list-item>
           <v-list-item title="A Lookup" to="a-lookup"></v-list-item>
+          <v-list-item title="AAAA Lookup" to="aaaa-lookup"></v-list-item>
           <v-list-item title="CNAME Lookup" to="cname-lookup"></v-list-item>
           <v-list-item title="TXT Lookup" to="txt-lookup"></v-list-item>
           <v-list-item title="NS Lookup" to="ns-lookup"></v-list-item>
