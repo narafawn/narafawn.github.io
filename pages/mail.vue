@@ -49,7 +49,7 @@ async function handleUserInput() {
 
     const tlds = 'com,jp,net,xyz,org,info'.split(',')
     if (tlds.some(tld => new RegExp(`.+\.${tld}$`).test(hostname))) {
-        const r = await fetch('https://ep.vercel.app/api/dns/ptr.js?' + new URLSearchParams({ hostname }))
+        const r = await fetch('https://ws.vercel.app/api/dns/ptr.js?' + new URLSearchParams({ hostname }))
         if (r.ok) {
             const imapHostnames = await r.json()
             if (imapHostnames.length) {

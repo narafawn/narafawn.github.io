@@ -28,6 +28,7 @@ function gotoTop() {
           <v-list-item title="CSR Decoder" to="csr-decoder"></v-list-item>
           <v-list-item title="CRT Decoder" to="crt-decoder"></v-list-item>
           <v-list-item title="SSH Key Generator" to="ssh-key-generator"></v-list-item>
+          <v-list-item title="CNAME Lookup" to="cname-lookup"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
           <v-list-item title="Replace text" to="replace-text"></v-list-item>
           <v-list-item title="Video Frame Picker" to="video-frame-picker"></v-list-item>
