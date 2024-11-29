@@ -2,7 +2,7 @@ name: Sync Upstream
 
 on:
   schedule:
-    - cron: "0 2 * * *" # 毎日午前2時に実行 (CRON形式で設定可能)
+    - cron: "0 17 * * *" # 毎日午前2時に実行 (CRON形式で設定可能)
   workflow_dispatch: # 手動トリガーも有効にする
 
 jobs:
