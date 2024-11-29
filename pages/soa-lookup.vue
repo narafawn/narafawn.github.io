@@ -20,7 +20,7 @@ const results = ref([{
 async function lookup() {
     if (!hostname.value) return
     if (results.value[0].name === 'example.com') results.value.splice(0, 1)
-    const params = { hostname: hostname.value, rrtype: 'SOA' }
+    const params = { hostname: hostname.value.trim(), rrtype: 'SOA' }
     const r = await fetch('https://ws.vercel.app/api/dns/dns.js?' + new URLSearchParams(params))
     const contents = await r.json()
     console.log(contents)

@@ -19,7 +19,7 @@ const results = ref([{
 async function lookup() {
     if (!hostname.value) return
     if (results.value[0].name === '4.4.2.2.3.3.5.6.8.1.4.4.e164.arpa') results.value.splice(0, 1)
-    const params = { hostname: hostname.value, rrtype: 'NAPTR' }
+    const params = { hostname: hostname.value.trim(), rrtype: 'NAPTR' }
     const r = await fetch('https://ws.vercel.app/api/dns/dns.js?' + new URLSearchParams(params))
     const contents = await r.json()
     console.log(contents)
