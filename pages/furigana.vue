@@ -123,25 +123,17 @@ rt {
     font-size: 0.7rem;
 }
 
-
 @media print {
-
-    header,
-    nav,
-    p,
-    details,
-    a,
-    .v-input {
-        display: none !important;
+    .v-toolbar, .v-navigation-drawer, .v-input, p, details, a {
+        display: none;
     }
 
     .v-container {
-        max-width: 100% !important;
-        padding: 0 !important;
+        max-width: none;
     }
 
-    main {
-        padding: 0 !important;
+    .v-container, .v-main {
+        padding: 0;
     }
 }
 </style>
