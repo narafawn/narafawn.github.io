@@ -45,6 +45,10 @@ function download() {
     downloaded.value = true
 }
 
+onMounted(() => {
+    if (window.forge) requestIdleCallback(handleInput)
+})
+
 useHead({
     title: 'Sectigo CSR HASH Token Generator',
     script: [
