@@ -7,7 +7,7 @@ const route = useRoute()
 
 watch(() => route, (newRoute) => {
   console.log('track route: ', newRoute)
-  drawer.value = false
+  setTimeout(() => (drawer.value = false), 1000)
 }, { immediate: true, deep: true })
 
 function gotoTop() {
