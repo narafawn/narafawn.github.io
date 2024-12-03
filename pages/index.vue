@@ -9,6 +9,7 @@
         <v-btn href="csr-generator" class="ma-2" variant="outlined" color="primary">CSR Generator</v-btn>
         <v-btn href="csr-decoder" class="ma-2" variant="outlined" color="primary">CSR Decoder</v-btn>
         <v-btn href="crt-decoder" class="ma-2" variant="outlined" color="primary">CRT Decoder</v-btn>
+        <v-btn href="sectigo-token" class="ma-2" variant="outlined" color="primary">Sectigo CSR HASH Token Generator</v-btn>
         <v-btn href="ssh-key-generator" class="ma-2" variant="outlined" color="primary">SSH Key Generator</v-btn>
         <v-btn href="a-lookup" class="ma-2" variant="outlined" color="primary">A Lookup</v-btn>
         <v-btn href="aaaa-lookup" class="ma-2" variant="outlined" color="primary">AAAA Lookup</v-btn>
