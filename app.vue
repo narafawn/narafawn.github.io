@@ -3,13 +3,6 @@ import { ref } from 'vue'
 
 const drawer = ref(null)
 
-const route = useRoute()
-
-watch(() => route, (newRoute) => {
-  console.log('track route: ', newRoute)
-  setTimeout(() => (drawer.value = false), 1000)
-}, { immediate: true, deep: true })
-
 function gotoTop() {
   location = '.'
 }
