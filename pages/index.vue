@@ -31,6 +31,7 @@
         <v-btn href="sha512" class="ma-2" variant="outlined" color="primary">SHA512</v-btn>
         <v-btn href="sha512-224" class="ma-2" variant="outlined" color="primary">SHA512/224</v-btn>
         <v-btn href="sha512-256" class="ma-2" variant="outlined" color="primary">SHA512/256</v-btn>
+        <v-btn href="hmac" class="ma-2" variant="outlined" color="primary">HMAC</v-btn>
         <v-btn href="count-lines" class="ma-2" variant="outlined" color="primary">Count Lines</v-btn>
         <v-btn href="replace-text" class="ma-2" variant="outlined" color="primary">Replace text</v-btn>
         <v-btn href="remove-key-quotes" class="ma-2" variant="outlined" color="primary">Remove JavaScript key

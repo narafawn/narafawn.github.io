@@ -48,6 +48,7 @@ function gotoTop() {
           <v-list-item title="SHA512" to="sha512"></v-list-item>
           <v-list-item title="SHA512/224" to="sha512-224"></v-list-item>
           <v-list-item title="SHA512/256" to="sha512-256"></v-list-item>
+          <v-list-item title="HMAC" to="hmac"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
           <v-list-item title="Replace text" to="replace-text"></v-list-item>
           <v-list-item title="Remove JS key quotes" to="remove-key-quotes"></v-list-item>
