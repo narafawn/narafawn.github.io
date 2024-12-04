@@ -25,6 +25,12 @@
         <v-btn href="soa-lookup" class="ma-2" variant="outlined" color="primary">SOA Lookup</v-btn>
         <v-btn href="srv-lookup" class="ma-2" variant="outlined" color="primary">SRV Lookup</v-btn>
         <v-btn href="md5" class="ma-2" variant="outlined" color="primary">MD5</v-btn>
+        <v-btn href="sha1" class="ma-2" variant="outlined" color="primary">SHA1</v-btn>
+        <v-btn href="sha256" class="ma-2" variant="outlined" color="primary">SHA256</v-btn>
+        <v-btn href="sha384" class="ma-2" variant="outlined" color="primary">SHA384</v-btn>
+        <v-btn href="sha512" class="ma-2" variant="outlined" color="primary">SHA512</v-btn>
+        <v-btn href="sha512-224" class="ma-2" variant="outlined" color="primary">SHA512/224</v-btn>
+        <v-btn href="sha512-256" class="ma-2" variant="outlined" color="primary">SHA512/256</v-btn>
         <v-btn href="count-lines" class="ma-2" variant="outlined" color="primary">Count Lines</v-btn>
         <v-btn href="replace-text" class="ma-2" variant="outlined" color="primary">Replace text</v-btn>
         <v-btn href="remove-key-quotes" class="ma-2" variant="outlined" color="primary">Remove JavaScript key

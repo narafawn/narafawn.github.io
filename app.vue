@@ -42,6 +42,12 @@ function gotoTop() {
           <v-list-item title="SOA Lookup" to="soa-lookup"></v-list-item>
           <v-list-item title="SRV Lookup" to="srv-lookup"></v-list-item>
           <v-list-item title="MD5" to="md5"></v-list-item>
+          <v-list-item title="SHA1" to="sha1"></v-list-item>
+          <v-list-item title="SHA256" to="sha256"></v-list-item>
+          <v-list-item title="SHA384" to="sha384"></v-list-item>
+          <v-list-item title="SHA512" to="sha512"></v-list-item>
+          <v-list-item title="SHA512/224" to="sha512-224"></v-list-item>
+          <v-list-item title="SHA512/256" to="sha512-256"></v-list-item>
           <v-list-item title="Count Lines" to="count-lines"></v-list-item>
           <v-list-item title="Replace text" to="replace-text"></v-list-item>
           <v-list-item title="Remove JS key quotes" to="remove-key-quotes"></v-list-item>
