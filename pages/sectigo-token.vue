@@ -25,11 +25,17 @@ const content = ref('')
 const downloaded = ref(false)
 
 async function handleInput() {
-    const csrBytes = forge.pki.pemToDer(csr.value).getBytes()
-    const md5 = forge.md.md5.create().update(csrBytes).digest().toHex()
-    const sha256 = forge.md.sha256.create().update(csrBytes).digest().toHex()
-    filename.value = md5.toUpperCase() + '.txt'
-    content.value = `${sha256}\nsectigo.com`
+    filename.value = ''
+    content.value = ''
+    try {
+        const csrBytes = forge.pki.pemToDer(csr.value).getBytes()
+        const md5 = forge.md.md5.create().update(csrBytes).digest().toHex()
+        const sha256 = forge.md.sha256.create().update(csrBytes).digest().toHex()
+        filename.value = md5.toUpperCase() + '.txt'
+        content.value = `${sha256}\nsectigo.com`
+    } catch (error) {
+        content.value = error.message
+    }
 }
 
 function downloadTextFile(text, filename) {
@@ -70,7 +76,7 @@ useHead({
         <a :href="'http://www.example.com/.well-known/pki-validation/' + filename">{{
             'http://www.example.com/.well-known/pki-validation/'
             + filename }}</a>
-        <div class="d-flex align-center">
+        <div class="d-flex align-center mt-2">
             <v-btn @click="download" color="secondary" class="mr-4">Download</v-btn>
             <a href="https://www.ssl247.com/knowledge-base/detail/domain-control-validation-dcv-methods/ka03l000000kfdIAAQ/"
                 target="_blank">Sectigo
