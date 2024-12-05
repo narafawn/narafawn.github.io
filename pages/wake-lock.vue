@@ -32,7 +32,7 @@ onMounted(async () => {
 
 onUnmounted(() => {
     console.log('onUnmounted')
-    clearInterval(intervalId)
+    if (intervalId) clearInterval(intervalId)
 })
 
 useHead({
