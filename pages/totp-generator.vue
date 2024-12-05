@@ -29,8 +29,9 @@ function copy() {
     copied.value = true
 }
 
+let intervalId
 onMounted(() => {
-    setInterval(() => {
+    intervalId = setInterval(() => {
         const sec = parseInt(Date.now() / 1000 % 30, 10)
         percent.value = parseInt(sec / 30 * 100, 10)
         second.value = sec
@@ -38,6 +39,8 @@ onMounted(() => {
     }, 1000)
     history.value = JSON.parse(localStorage.getItem('totp.history')) ?? []
 })
+
+onUnmounted(() => clearInterval(intervalId))
 
 async function handleClickRow(event, row) {
     secret.value = row.item.secret
@@ -60,7 +63,7 @@ useHead({
             <v-btn v-if="secret && otp" @click="copy" color="secondary" class="mx-4">Copy</v-btn>
             <v-progress-circular v-if="secret && otp" color="primary" :model-value="percent" :size="60" :width="10">{{
                 second
-            }}</v-progress-circular>
+                }}</v-progress-circular>
         </div>
         <v-data-table v-if="history.length" :headers="headers" :items="history"
             @click:row="handleClickRow"></v-data-table>
