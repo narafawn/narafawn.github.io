@@ -2,6 +2,9 @@
 import { ref } from 'vue'
 
 const message = ref('Wake lock is not supported by this browser.')
+const elapsed = ref(0)
+let start = 0
+let intervalId = null
 
 async function requestWakeLock() {
     try {
@@ -11,6 +14,12 @@ async function requestWakeLock() {
             console.log('Released')
             message.value = 'Released'
         })
+        if (intervalId) clearInterval(intervalId)
+        start = Date.now()
+        setInterval(() => {
+            const s = Math.floor((Date.now() - start) / 1000)
+            elapsed.value = `${Math.floor(s / 60).toString().padStart(2, 0)}:${(s % 60).toString().padStart(2, 0)}`
+        }, 1000)
     } catch (error) {
         message.value = `${error.name}, ${error.message}`
     }
@@ -31,5 +40,6 @@ useHead({
         {{ message }}
         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API" target="_blank">About Screen
             Wake Lock</a>
+        <h1 v-if="message === 'Acquired'">{{ elapsed }}</h1>
     </v-container>
 </template>
