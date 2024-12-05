@@ -80,9 +80,12 @@ function getRowClass(item) {
     return { class: typeof item.item.content === 'string' && item.item.content.startsWith('querySrv E') ? 'unavailable-row' : 'available-row' }
 }
 
+let intervalId
 onMounted(() => {
-    setInterval(lookup, 30000)
+    intervalId = setInterval(lookup, 30000)
 })
+
+onUnmounted(() => clearInterval(intervalId))
 
 useHead({
     title: 'SRV Lookup Checker',
