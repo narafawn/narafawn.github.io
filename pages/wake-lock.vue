@@ -30,6 +30,11 @@ onMounted(async () => {
     document.addEventListener('visibilitychange', () => document.visibilityState === 'visible' && requestWakeLock())
 })
 
+onUnmounted(() => {
+    console.log('onUnmounted')
+    clearInterval(intervalId)
+})
+
 useHead({
     title: 'Screen Wake Lock',
 })
