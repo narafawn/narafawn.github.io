@@ -25,6 +25,7 @@
         <v-btn href="soa-lookup" class="ma-2" variant="outlined" color="primary">SOA Lookup</v-btn>
         <v-btn href="srv-lookup" class="ma-2" variant="outlined" color="primary">SRV Lookup</v-btn>
         <v-btn href="reverse-ip-lookup" class="ma-2" variant="outlined" color="primary">Reverse IP Lookup</v-btn>
+        <v-btn href="whois" class="ma-2" variant="outlined" color="primary">Whois</v-btn>
         <v-btn href="md5" class="ma-2" variant="outlined" color="primary">MD5</v-btn>
         <v-btn href="sha1" class="ma-2" variant="outlined" color="primary">SHA1</v-btn>
         <v-btn href="sha256" class="ma-2" variant="outlined" color="primary">SHA256</v-btn>

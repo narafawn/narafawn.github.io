@@ -42,6 +42,7 @@ function gotoTop() {
           <v-list-item title="SOA Lookup" to="soa-lookup"></v-list-item>
           <v-list-item title="SRV Lookup" to="srv-lookup"></v-list-item>
           <v-list-item title="Reverse IP Lookup" to="reverse-ip-lookup"></v-list-item>
+          <v-list-item title="Whois" to="whois"></v-list-item>
           <v-list-item title="MD5" to="md5"></v-list-item>
           <v-list-item title="SHA1" to="sha1"></v-list-item>
           <v-list-item title="SHA256" to="sha256"></v-list-item>

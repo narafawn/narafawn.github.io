@@ -98,7 +98,7 @@ useHead({
 <template>
     <v-container>
         <div class="d-flex align-center">
-            <v-text-field label="Domain" placeholder="example.com" v-model="ip" class="flex-grow-0 mr-2" hide-details
+            <v-text-field label="IP" placeholder="example.com" v-model="ip" class="flex-grow-0 mr-2" hide-details
                 width="350" @input="handleInput" @keyup.enter="lookup" />
             <v-btn @click="lookup" color="primary">Lookup</v-btn>
         </div>
