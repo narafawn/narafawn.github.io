@@ -4,7 +4,7 @@ import { ref } from 'vue'
 const message = ref('Wake lock is not supported by this browser.')
 const elapsed = ref(0)
 let start = 0
-let intervalId = null
+let intervalId
 
 async function requestWakeLock() {
     try {
@@ -16,7 +16,7 @@ async function requestWakeLock() {
         })
         if (intervalId) clearInterval(intervalId)
         start = Date.now()
-        setInterval(() => {
+        intervalId = setInterval(() => {
             const s = Math.floor((Date.now() - start) / 1000)
             elapsed.value = `${Math.floor(s / 60).toString().padStart(2, 0)}:${(s % 60).toString().padStart(2, 0)}`
         }, 1000)
