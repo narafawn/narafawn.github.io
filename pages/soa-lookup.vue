@@ -83,9 +83,12 @@ function getRowClass(item) {
     return { class: typeof item.item.content === 'string' && item.item.content.startsWith('querySoa E') ? 'unavailable-row' : 'available-row' }
 }
 
+let intervalId
 onMounted(() => {
-    setInterval(lookup, 30000)
+    intervalId = setInterval(lookup, 30000)
 })
+
+onUnmounted(() => clearInterval(intervalId))
 
 useHead({
     title: 'SOA Lookup Checker',

@@ -75,9 +75,12 @@ function getRowClass(item) {
     return { class: typeof item.item.content === 'string' && item.item.content.startsWith('queryCaa E') ? 'unavailable-row' : 'available-row' }
 }
 
+let intervalId
 onMounted(() => {
-    setInterval(lookup, 30000)
+    intervalId = setInterval(lookup, 30000)
 })
+
+onUnmounted(() => clearInterval(intervalId))
 
 useHead({
     title: 'CAA Lookup Checker',
