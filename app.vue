@@ -18,6 +18,7 @@ function gotoTop() {
 
       <v-navigation-drawer v-model="drawer">
         <v-list>
+          <v-list-item title="Google Search" to="google-search"></v-list-item>
           <v-list-item title="Password Generator" to="password-generator"></v-list-item>
           <v-list-item title="Passphrase Generator" to="passphrase-generator"></v-list-item>
           <v-list-item title="URL Shortener" to="url-shortener"></v-list-item>

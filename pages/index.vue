@@ -1,5 +1,6 @@
 <template>
     <v-container>
+        <v-btn href="google-search" class="ma-2" variant="outlined" color="primary">Google Search</v-btn>
         <v-btn href="password-generator" class="ma-2" variant="outlined" color="primary">Password Generator</v-btn>
         <v-btn href="passphrase-generator" class="ma-2" variant="outlined" color="primary">Passphrase Generator</v-btn>
         <v-btn href="url-shortener" class="ma-2" variant="outlined" color="primary">URL Shortener</v-btn>
